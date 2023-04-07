@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { Box } from '@mui/material';
 import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
 import MoviePage from './Pages/MoviePage';
@@ -6,9 +7,12 @@ import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Signup from './Pages/Signup';
 
+import './index.css'
+
 function App() {
   return (
     <>
+    <Box>
       <NavBar/>
         <Routes>
           <Route exact path="/" element={<Home/>} />
@@ -17,6 +21,7 @@ function App() {
           <Route exact path="/Signup" element={<Signup />} />
         </Routes>
       <Footer />
+    </Box>
     </>
   );
 }
