@@ -6,15 +6,14 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
+import User from '../Pages/User';
 
 const Search = styled('div')(({ theme }) => ({
       position: 'relative',
@@ -76,29 +75,33 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
+  const handleUserProfile = () => {
+    console.log("User page");
+  };
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        id={menuId}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={isMenuOpen}
+        onClose={handleMenuClose}
+      >
+      <MenuItem component={Link} to='/User'>My Account</MenuItem>
+      <MenuItem component={Link} to='/Login'>Logout</MenuItem>
     </Menu>
   );
 
@@ -136,25 +139,29 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" style={{backgroundColor: 'black'}}>
+      <AppBar position="fixed" style={{backgroundColor: '#0c0b32'}}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
+            component={Link}
+            to="/"
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
             <LiveTvIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
+            paddingLeft={'5px'}
+            fontFamily={'cursive'}
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
             Js Movie App
           </Typography>
+          </IconButton>
 
           <Box sx={{ flexGrow: 1 }} />
 

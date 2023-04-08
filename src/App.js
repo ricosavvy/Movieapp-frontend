@@ -6,6 +6,7 @@ import MoviePage from './Pages/MoviePage';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Signup from './Pages/Signup';
+import User from './Pages/User';
 
 import './index.css'
 
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/Movie" element={<MoviePage />} />
           <Route exact path="/Login" element={<LogIn />} />
           <Route exact path="/Signup" element={<Signup />} />
+          <Route exact path="/User" element={<User />} />
         </Routes>
       <Footer />
     </Box>
