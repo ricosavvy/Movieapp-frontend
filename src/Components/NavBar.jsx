@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
-import User from '../Pages/User';
+// import User from '../Pages/User';
 
 const Search = styled('div')(({ theme }) => ({
       position: 'relative',
@@ -139,7 +139,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" style={{backgroundColor: '#0c0b32'}}>
+      <AppBar position="fixed" style={{backgroundColor: '#000000'}}>
         <Toolbar>
           <IconButton
             size="large"
