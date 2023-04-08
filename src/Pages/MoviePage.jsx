@@ -6,11 +6,11 @@ import StarIcon from '@mui/icons-material/Star';
 
 
 const MoviePage = () => {
-  
+
   const [ popularMovies, setPopularMovies ] = useState([])
   
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=8f2c212a2c2a3b4a6ac6799584dcb594")
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(data => setPopularMovies(data.results))
   })
