@@ -13,6 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
+import Divider from '@mui/material/Divider';
 // import User from '../Pages/User';
 
 const Search = styled('div')(({ theme }) => ({
@@ -101,6 +102,7 @@ export default function PrimarySearchAppBar() {
         onClose={handleMenuClose}
       >
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
+      <Divider/>
       <MenuItem component={Link} to='/Login'>Logout</MenuItem>
     </Menu>
   );

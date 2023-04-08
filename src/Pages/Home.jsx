@@ -1,16 +1,11 @@
-import React from 'react'
-import { useEffect } from "react";
+import { React } from "react";
 import { Container, Typography, Stack } from '@mui/material';
+import About from '../Components/About'
+import { Link } from "react-router-dom";
 import {Button} from '@mui/material';
 import './pages.css'
 
 const Home = () => {
-
-  // useEffect(() => {
-  //   fetch("https://api.themoviedb.org/3/movie/popular?api_key=8f2c212a2c2a3b4a6ac6799584dcb594")
-  //     .then(response => response.json())
-  //     .then(data => console.log(data))
-  // })
 
   // const options = {
   //   method: 'GET',
@@ -26,32 +21,41 @@ const Home = () => {
   //   .catch(err => console.error(err));
 
   return (
-    <div className='Hero_Section'>
-      <Container maxWidth='sm'>
-        <Typography 
-          variant='h2' 
-          color='white'
-          fontFamily='monospace' 
-          gutterBottom>Find Your Next Favorite Movie</Typography>
-        {/* <Typography 
-          variant='h5' 
-          align='center'  
-          color='white'
-          // paddingTop={'10'}
-          fontFamily='monospace' 
-           alignItems={'center'} marginLeft={'30%'} 
-          gutterBottom>Get personalized movie recommendations based on your preferences</Typography> */}
-      <Stack direction="row" spacing={2}>
-        <Button variant="contained" color='error'>
-        Get Started
-        </Button>
-        <Button variant="outlined" color='warning'>
-          About Us
-        </Button>
-      </Stack> 
-        
-      </Container>
-    </div>
+    <>
+      <div className='Hero_Section'>
+        <Container maxWidth='sm'>
+          <Typography 
+            variant='h2' 
+            color='white'
+            fontFamily='monospace' 
+            gutterBottom>Find Your Next Favorite Movie</Typography>
+          {/* <Typography 
+            variant='h5' 
+            align='center'  
+            color='white'
+            // paddingTop={'10'}
+            fontFamily='monospace' 
+            alignItems={'center'} marginLeft={'30%'} 
+            gutterBottom>Get personalized movie recommendations based on your preferences</Typography> */}
+          <Stack direction="row" spacing={2}>
+            <Button variant="contained" color='error'>
+            Get Started
+            </Button>
+            <Link activeClass="active"
+              to="/Movies"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}>
+              <Button variant="outlined" color='warning'>
+                Find Movies
+              </Button>
+            </Link>
+          </Stack> 
+        </Container>
+
+      </div>
+    </>
   )
 }
 
