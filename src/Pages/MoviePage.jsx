@@ -13,7 +13,7 @@ const MoviePage = () => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(data => setPopularMovies(data.results))
-  })
+  }, [])
   
   return (
     <div>
