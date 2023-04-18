@@ -3,6 +3,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from "react-router-dom";
 import StarIcon from '@mui/icons-material/Star';
+import Tabs from '../Components/Tabs'
+import Footer from '../Components/Footer'
 
 
 const MoviePage = () => {
@@ -17,6 +19,8 @@ const MoviePage = () => {
   
   return (
     <div>
+
+      {/* Movies carousel */}
       <div className="Movies">
             <Carousel
               showThumbs={false}
@@ -47,6 +51,12 @@ const MoviePage = () => {
               }
             </Carousel>
         </div>
+
+      {/* Movie categories */}
+
+      <div className="movie__categories">
+          <Tabs />
+      </div>
     </div>
   )
 }

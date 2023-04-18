@@ -1,0 +1,21 @@
+.movie__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie__Item{
+    border-left: .5px solid rgba(65, 87, 97, 0.403);
+    border-bottom: .5px solid rgba(55, 61, 64, 0.522);
+    border-top: .5px solid rgba(86, 48, 48, 0.522);
+    border-right: .5px solid rgba(86, 48, 48, 0.647);
+    width: fit-content;
+    margin: 1.5rem; 
+    height: 25rem;
+    overflow: hidden;
+}
+
+.cardcontent{
+    background-color: black; 
+    color: white;
+}
