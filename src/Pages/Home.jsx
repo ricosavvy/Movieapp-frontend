@@ -25,9 +25,16 @@ const Home = () => {
             alignItems={'center'} marginLeft={'30%'} 
             gutterBottom>Get personalized movie recommendations based on your preferences</Typography> */}
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" color='error'>
-            Get Started
-            </Button>
+          <Link activeClass="active"
+              to="/Login"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}>
+              <Button variant="contained" color='error'>
+              Get Started
+              </Button>
+            </Link>
             <Link activeClass="active"
               to="/Movies"
               spy={true}

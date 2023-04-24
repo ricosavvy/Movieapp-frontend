@@ -12,7 +12,7 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Divider from '@mui/material/Divider';
 // import User from '../Pages/User';
 
@@ -57,6 +57,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   }));
 
 export default function PrimarySearchAppBar() {
+  // const history = Navigate();
+  const [value, setValue] = React.useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    
+    // Navigate('/' + event.target.value);
+    console.log(event.target.value);
+  };
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -103,6 +113,7 @@ export default function PrimarySearchAppBar() {
       >
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
       <Divider/>
+      <MenuItem component={Link} to='/About_us'>About Us</MenuItem>
       <MenuItem component={Link} to='/Login'>Logout</MenuItem>
     </Menu>
   );
@@ -161,7 +172,7 @@ export default function PrimarySearchAppBar() {
             fontFamily={'cursive'}
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Js Movie App
+            Movie App<span style={{color: 'yellow'}}>.Js</span> 
           </Typography>
           </IconButton>
 
@@ -174,6 +185,8 @@ export default function PrimarySearchAppBar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              value={value}
+              onChange={handleChange}
             />
           </Search>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
