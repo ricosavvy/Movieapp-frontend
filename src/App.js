@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NavBar from './Components/NavBar';
+
+
 // import Footer from './Components/Footer';
 import MoviePage from './Pages/MoviePage';
 import Home from './Pages/Home';
