@@ -9,7 +9,8 @@ import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Signup from './Pages/Signup';
 import User from './Pages/User';
-
+import ContactUs from './Pages/ContactUs';
+// import './Pages/ContactUs.css';
 import './index.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/Login" element={<LogIn />} />
           <Route exact path="/Signup" element={<Signup />} />
           <Route exact path="/User" element={<User />} />
+          <Route exact path="/ContactUs" element={<ContactUs />} />
         </Routes>
       {/* <Footer /> */}
     </Box>
