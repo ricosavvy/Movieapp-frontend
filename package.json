@@ -21,7 +21,7 @@
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-responsive-masonry": "^2.1.7",
-    "react-router-dom": "^6.9.0",
+    "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
     "redux-persist": "^6.0.0",
@@ -54,7 +54,6 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ComputerScienceGroupWork/Movieapp-frontend.git"
