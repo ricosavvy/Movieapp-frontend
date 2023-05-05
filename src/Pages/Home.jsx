@@ -12,12 +12,12 @@ const Home = () => {
       <div className='Hero_Section'>
         <Container maxWidth='sm'>
           <Typography 
-            variant='h2' 
-            color='white'
+            variant='h2'    
+            color='white'    
             fontFamily='monospace' 
             gutterBottom>Find Your Next Favorite Movie</Typography>
           {/* <Typography 
-            variant='h5' 
+            variant='h5'    
             align='center'  
             color='white'
             // paddingTop={'10'}
@@ -26,7 +26,7 @@ const Home = () => {
             gutterBottom>Get personalized movie recommendations based on your preferences</Typography> */}
           <Stack direction="row" spacing={2}>
             <Button variant="contained" color='error'>
-            Get Started
+            Get  Started
             </Button>
             <Link activeClass="active"
               to="/Movies"
