@@ -113,7 +113,7 @@ export default function PrimarySearchAppBar() {
       >
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
       <Divider/>
-      <MenuItem component={Link} to='/About_us'>About Us</MenuItem>
+      <MenuItem component={Link} to='/ContactUs'>Contact Us</MenuItem>
       <MenuItem component={Link} to='/Login'>Logout</MenuItem>
     </Menu>
   );
