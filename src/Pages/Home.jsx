@@ -26,7 +26,7 @@ const Home = () => {
             gutterBottom>Get personalized movie recommendations based on your preferences</Typography> */}
           <Stack direction="row" spacing={2}>
             <Button variant="contained" color='error'>
-            Get  Started
+            Get Started
             </Button>
             <Link activeClass="active"
               to="/Movies"

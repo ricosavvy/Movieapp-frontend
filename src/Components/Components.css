@@ -13,6 +13,12 @@
     margin: 1.5rem; 
     height: 25rem;
     overflow: hidden;
+    transition: 3 all ease-in;
+}
+
+.movie__Item:hover{
+    scale: 1.07;
+    /* box-shadow: 3px 3px 1px 0px rgba(132, 111, 111, 0.411); */
 }
 
 .cardcontent{
