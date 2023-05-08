@@ -22,7 +22,7 @@ function ContactUs() {
             <img src=" " alt=" frontend Developer 3" />
             <h5> frontend Developer 3</h5>
             <p> frontend developer3@Jsmovieapp.com</p>
-          </div>
+          </div>  
           <div className=" backend developer">
             <img src="img12.jpeg" alt=" backend Developer 4" />
             <h6> backend Developer 4</h6>
@@ -31,10 +31,10 @@ function ContactUs() {
           <div className=" backend developer">
             <img src="img9.jpeg" alt=" backend Developer 5" />
             <h7> backend Developer 5</h7>
-            <p> backend developer5@Jsmovieapp.com</p>
+            <p> backend developer5@Jsmovieapp.com</p>  
           </div>
           <div className=" backend developer">
-            <img src="developer-2.jpg" alt=" backend Developer 6" />
+            <img src="img10.jpeg" alt=" backend Developer 6" />
             <h8> backend Developer 6</h8>
             <p> backend developer6@Jsmovieapp.com</p>
           </div>
