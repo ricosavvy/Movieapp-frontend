@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import "./pages.css";
 import { useParams } from 'react-router-dom';
-const MovieInfo = () => {
 
+
+const MovieInfo = () => {
   const[movieInfo, setMovie] = useState();
   const{ id } = useParams();
 

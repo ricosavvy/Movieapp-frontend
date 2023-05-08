@@ -51,6 +51,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
@@ -64,4 +65,7 @@
     "url": "https://github.com/ComputerScienceGroupWork/Movieapp-frontend/issues"
   },
   "homepage": "https://github.com/ComputerScienceGroupWork/Movieapp-frontend#readme"
+=======
+  }
+>>>>>>> 00c9b309c585a0bd1db473f43e07777dbfbf5783
 }

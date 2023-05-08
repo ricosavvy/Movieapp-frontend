@@ -10,23 +10,31 @@ function LoginSignup() {
 
   return (
     <div>
-      <h2>{login ? 'Log In' : 'Sign Up'}</h2> // Display either "Log In" or "Sign Up" based on login state
+      {/* Display either "Log In" or "Sign Up" based on login state */}
+      <h2>{login ? 'Log In' : 'Sign Up'}</h2> 
       <form>
         <div>
-          <label htmlFor="email">Email:</label> // Label for email input field
-          <input type="email" id="email" name="email" required /> // Email input field
+          {/* Label for email input field */}
+          <label htmlFor="email">Email:</label> 
+          {/* Email input field */}
+          <input type="email" id="email" name="email" required />
         </div>
         <div>
-          <label htmlFor="password">Password:</label> // Label for password input field
-          <input type="password" id="password" name="password" required /> // Password input field
+          {/* Label for password input field */}
+          <label htmlFor="password">Password:</label> 
+          {/* Password input field */}
+          <input type="password" id="password" name="password" required /> 
         </div>
         {!login && ( // Show confirm password field if user is signing up
           <div>
-            <label htmlFor="confirmPassword">Confirm Password:</label> // Label for confirm password input field
-            <input type="password" id="confirmPassword" name="confirmPassword" required /> // Confirm password input field
+            {/* Label for confirm password input field */}
+            <label htmlFor="confirmPassword">Confirm Password:</label> 
+            {/* Confirm password input field */}
+            <input type="password" id="confirmPassword" name="confirmPassword" required /> 
           </div>
         )}
-        <button type="submit">{login ? 'Log In' : 'Sign Up'}</button> // Submit button with conditional text based on login state
+        {/* Submit button with conditional text based on login state */}
+        <button type="submit">{login ? 'Log In' : 'Sign Up'}</button> 
       </form>
       <div>
         {login ? ( // Link to toggle between log in and sign up

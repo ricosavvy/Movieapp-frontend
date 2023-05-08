@@ -32,21 +32,12 @@ const Search = styled('div')(({ theme }) => ({
     }, 
   }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-      padding: theme.spacing(0, 1),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-  }));
+
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
       width: '100%',
@@ -59,19 +50,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   // const history = Navigate();
   const [value, setValue] = React.useState('');
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    
-    // Navigate('/' + event.target.value);
-    console.log(event.target.value);
   };
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const Searching = () =>{
+      console.log("hello")
+  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -84,10 +74,6 @@ export default function PrimarySearchAppBar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-  };
-
-  const handleUserProfile = () => {
-    console.log("User page");
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -113,7 +99,7 @@ export default function PrimarySearchAppBar() {
       >
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
       <Divider/>
-      <MenuItem component={Link} to='/About_us'>About Us</MenuItem>
+      <MenuItem component={Link} to='/ContactUs'>Contact Us</MenuItem>
       <MenuItem component={Link} to='/Login'>Logout</MenuItem>
     </Menu>
   );
@@ -179,15 +165,20 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ flexGrow: 1 }} />
 
           <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               value={value}
               onChange={handleChange}
             />
+              <IconButton
+              size="large"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={Searching}
+            >
+              <SearchIcon />
+            </IconButton>
           </Search>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
