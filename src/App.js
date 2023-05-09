@@ -6,13 +6,8 @@ import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Signup from './Pages/Signup';
 import User from './Pages/User';
-<<<<<<< HEAD
 // import ContactUs from './Pages/ContactUs';
 // import './Pages/ContactUs.css';
-=======
-import MovieInfo from './Pages/MovieInfo'
-import ContactUs from './Pages/ContactUs';
->>>>>>> 00c9b309c585a0bd1db473f43e07777dbfbf5783
 import './index.css'
 
 function App() {
