@@ -143,7 +143,7 @@ export default function LabTabs() {
                         alt="movie id"
                         />
                         <CardContent className='cardcontent'>
-                        <Typography gutterBottom variant="h5" component="div" style={{fontFamily: 'fantasy'}}>
+                        <Typography gutterBottom variant="h5" component="div">
                             {movie ? movie.original_title: " "}
                         </Typography>
                         <Typography variant="body2" gutterBottom style={{}}>

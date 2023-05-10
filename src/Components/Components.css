@@ -28,8 +28,9 @@
 
 /* ------------------- Container css------------------------------ */
 .Container{
-    background-color: inherit;
     padding: 1.5rem;
     border: 1.0px solid #505050;
     border-radius: 1.5rem;
+    width: 100%;
+    height: fit-content;
 }

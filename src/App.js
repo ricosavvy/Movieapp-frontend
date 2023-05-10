@@ -2,11 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NavBar from './Components/NavBar';
 import MoviePage from './Pages/MoviePage';
+import MovieInfo from './Pages/MovieInfo';
 import Home from './Pages/Home';
 import LogIn from './Pages/LogIn';
 import Signup from './Pages/Signup';
 import User from './Pages/User';
-// import ContactUs from './Pages/ContactUs';
+import ContactUs from './Pages/ContactUs';
 // import './Pages/ContactUs.css';
 import './index.css'
 
@@ -20,8 +21,9 @@ function App() {
           <Route exact path="/Movies" element={<MoviePage />} />
           <Route exact path="/movie/:id" element={<MovieInfo />} />
           <Route exact path="/Login" element={<LogIn />} />
-          <Route exact path="/Signup" element={<Signup />} />
+          {/* <Route exact path="/Signup" element={<Signup />} /> */}
           <Route exact path="/User" element={<User />} />
+          <Route exact path="/ContactUs" element={<ContactUs />} />
           {/* <Route exact path="/ContactUs" element={<ContactUs />} /> */}
         </Routes>
       {/* <Footer /> */}

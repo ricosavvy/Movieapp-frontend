@@ -25,11 +25,6 @@ const Home = () => {
             alignItems={'center'} marginLeft={'30%'} 
             gutterBottom>Get personalized movie recommendations based on your preferences</Typography> */}
           <Stack direction="row" spacing={2}>
-<<<<<<< HEAD
-            <Button variant="contained" color='error'>
-            Get Started
-            </Button>
-=======
           <Link activeClass="active"
               to="/Movies"
               spy={true}
@@ -40,7 +35,6 @@ const Home = () => {
               Find Quick Movie
               </Button>
             </Link>
->>>>>>> 00c9b309c585a0bd1db473f43e07777dbfbf5783
             <Link activeClass="active"
               to="/Login"
               spy={true}
