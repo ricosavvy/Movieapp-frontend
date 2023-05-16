@@ -170,7 +170,7 @@ export default function LabTabs() {
                     <CardActionArea>
                         <CardMedia className='cardmedia'
                         component="img"
-                        height="200"
+                        height="300"
                         image={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`}
                         alt="movie id"
                         />

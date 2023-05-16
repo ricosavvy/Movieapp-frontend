@@ -16,31 +16,16 @@ const Home = () => {
             color='white'    
             fontFamily='monospace' 
             gutterBottom>Find Your Next Favorite Movie</Typography>
-          {/* <Typography 
-            variant='h5'    
-            align='center'  
-            color='white'
-            // paddingTop={'10'}
-            fontFamily='monospace' 
-            alignItems={'center'} marginLeft={'30%'} 
-            gutterBottom>Get personalized movie recommendations based on your preferences</Typography> */}
+
           <Stack direction="row" spacing={2}>
-          <Link activeClass="active"
-              to="/Movies"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}>
+          <Link
+              to="/Movies">
               <Button variant="contained" color='error'>
               Find Quick Movie
               </Button>
             </Link>
-            <Link activeClass="active"
-              to="/Login"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}>
+            <Link
+              to="/Login">
               <Button variant="outlined" color='warning'>
                 Log In/Sign Up
               </Button>
@@ -50,7 +35,17 @@ const Home = () => {
 
       </div>
       <div className="About-Us">
-          
+          <h2>About Us</h2>
+          <Container maxWidth=''>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum repudiandae a eum obcaecati! Blanditiis enim id culpa debitis explicabo, quos quasi similique saepe. Itaque alias magni corrupti in tempore autem?
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo ex voluptate similique totam illum rem porr quis deleniti non harum, id ea assumenda quod ipsum, architecto ratione itaque labore eligendi!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non animi autem praesentium. Aliquam enim natus vitaeautem unde deserunt cum atque hic, esse nulla minima, sunt, consectetur quae necessitatibus sit.
+          </Container>
+          <Link to="/ContactUs">
+            <Button variant="outlined" color="primary">
+              Contact Us
+            </Button>
+          </Link>
       </div>
       <Footer />
     </>

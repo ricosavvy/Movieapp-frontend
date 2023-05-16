@@ -12,7 +12,7 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Divider from '@mui/material/Divider';
 // import User from '../Pages/User';
 
@@ -48,7 +48,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   }));
 
 export default function PrimarySearchAppBar() {
-  // const history = Navigate();
   const [value, setValue] = React.useState('');
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -60,7 +59,7 @@ export default function PrimarySearchAppBar() {
   };
 
   const Searching = () =>{
-      console.log("hello")
+    const history = useNavigate();
   }
 
   const handleProfileMenuOpen = (event) => {
@@ -164,7 +163,7 @@ export default function PrimarySearchAppBar() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          <Search>
+          <Search sx={{ display: { xs: 'flex', sm: 'flex', md: 'flex' } }}>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}

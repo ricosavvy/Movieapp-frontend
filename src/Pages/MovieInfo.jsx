@@ -1,10 +1,11 @@
 import {React, useEffect, useState} from 'react';
 import Container from '../Components/Container';
 import StarIcon from '@mui/icons-material/Star';
-import "./pages.css";
+import "./MovieInfo.css";
 import { useParams } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import { Typography } from '@mui/material';
+import Form from '../Components/Form';
 
 
 const MovieInfo = () => {
@@ -25,29 +26,33 @@ const MovieInfo = () => {
   return (
     <>
       <div className="movie__details">
-      <div className='movie'>
-          <div className="movie__pic">
-            <img src={`https://image.tmdb.org/t/p/original${movieInfo && movieInfo.backdrop_path}`} alt="Poster" />
-          </div>
+        <div className='movie'>
+            <div className="movie__pic">
+              <img src={`https://image.tmdb.org/t/p/original${movieInfo && movieInfo.backdrop_path}`} alt="Poster" />
+            </div>
+        </div>
 
+        <div className="movie__pic__overlay"></div>
           <div className="mainrow">
               <div className="movie__minipic">
-                <img src={`https://image.tmdb.org/t/p/original${movieInfo && movieInfo.poster_path}`} alt="Poster" />
+                  <img src={`https://image.tmdb.org/t/p/original${movieInfo && movieInfo.poster_path}`} alt="Poster" />
               </div>
-            <div className="strow">
-              <div className="movie__title">
-                {movieInfo ? movieInfo.original_title: " "}
-              </div>
+
+              <div className="strow">
+                <div className="movie__title">
+                  {movieInfo ? movieInfo.original_title: " "}
+                </div>
               <div className="tagline">
-                {movieInfo ? movieInfo.tagline: " "}
+                  {movieInfo ? movieInfo.tagline: " "}
               </div>
+
               <div className="ratings">
                 <div className="rate">{movieInfo ? "Global rating: " + movieInfo.vote_average: " "}<StarIcon/>{" "}</div> 
                 <div className="rate">{movieInfo ? "Local rating: " + movieInfo.vote_average: " "}<StarIcon/>{" "}</div>
               </div>
             </div>
+        </div>
 
-          </div>
 
           <div className="thrdrow">
             <div className="genres">
@@ -61,16 +66,17 @@ const MovieInfo = () => {
               {/* {movieInfo ? "Status: " + movieInfo.status: " "}*/} 
             </div> 
           </div>
-
-
-        </div>
           <div className="secondmain">
             <div className="overview_templete">
               <div className="overview">
                 {/* <Typography variant='H1' style={{}}>Overview </Typography> <br /> */}
-                {movieInfo ?  movieInfo.overview: " "}
+                {movieInfo ?  "\""+ movieInfo.overview: " "}
               </div>
             </div>
+          </div>
+
+          <div className="theForm">
+            <Form />
           </div>
         </div>
         <Footer/>
