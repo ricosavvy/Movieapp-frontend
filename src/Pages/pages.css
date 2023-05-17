@@ -90,6 +90,37 @@
     letter-spacing: .2rem;
 }
 
+.movie__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 20px;
+    background: black;
+    margin-top: 3rem;
+}
+
+.movie__Item{
+    /* border-left: .5px solid rgba(65, 87, 97, 0.403);*/
+    border-bottom: .5px solid rgba(255, 255, 255, 0.23); 
+    /* border-top: .5px solid rgba(86, 48, 48, 0.522);
+    border-right: .5px solid rgba(86, 48, 48, 0);  */
+    width: fit-content;
+    margin: 1.5rem; 
+    height: 25rem;
+    overflow: hidden;
+    transition: 2 all ease-in;
+}
+
+.movie__Item:hover{
+    scale: 1.03;
+    /* box-shadow: 3px 3px 1px 0px rgba(132, 111, 111, 0.411); */
+}
+
+.cardcontent{
+    background-color: black; 
+    color: white;
+}
+
 @media screen and (max-width: 1000px) {
     .posterImage>img{
         height: 100%;

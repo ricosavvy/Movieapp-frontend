@@ -1,11 +1,13 @@
 import {React, useEffect, useState} from 'react';
 import Container from '../Components/Container';
 import StarIcon from '@mui/icons-material/Star';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import "./MovieInfo.css";
 import { useParams } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import { Typography } from '@mui/material';
-import Form from '../Components/Form';
+import Forms from '../Components/Form';
 
 
 const MovieInfo = () => {
@@ -54,29 +56,51 @@ const MovieInfo = () => {
         </div>
 
 
+        <div className="third__row">
           <div className="thrdrow">
             <div className="genres">
               {movieInfo && movieInfo.genres ? movieInfo.genres.map(genre => (<><span className='genre' id={genre.id}>{genre.name}</span></>)) : " "}
-            </div> <br />
-            <div className="language">
-              {movieInfo ? "Original language: " + movieInfo.original_language: " "}
-            </div> <br />
+            </div> 
+            <br />
             <div className="status">
+              {movieInfo ? "Original language: " + movieInfo.original_language: " "}
+                <br /><br />
               {movieInfo ? " Release date: " + movieInfo.release_date: " "} 
-              {/* {movieInfo ? "Status: " + movieInfo.status: " "}*/} 
             </div> 
           </div>
+          <div className="like_btn">
+              <button id='smtbtn' type="submit">
+                <ThumbUpIcon />
+              </button>
+              <button id='smtbtn' type="submit">
+                <ThumbDownIcon />
+              </button>
+          </div>
+        </div>
+          
           <div className="secondmain">
             <div className="overview_templete">
               <div className="overview">
-                {/* <Typography variant='H1' style={{}}>Overview </Typography> <br /> */}
                 {movieInfo ?  "\""+ movieInfo.overview: " "}
               </div>
             </div>
           </div>
 
           <div className="theForm">
-            <Form />
+            <Forms />
+          </div>
+
+          <div className="reviews">
+            <div className="review">
+                <Typography variant='H6'>Overview </Typography> <br />
+                <Typography variant='subtitle1'>Overview </Typography>
+                <Typography variant='subtitle1'>Overview </Typography>
+            </div>
+            <div className="review">
+                <Typography variant='H6'>Overview </Typography> <br />
+                <Typography variant='subtitle1'>Overview </Typography>
+                <Typography variant='subtitle1'>Overview </Typography>
+            </div>
           </div>
         </div>
         <Footer/>

@@ -74,13 +74,19 @@
     font-size: 2.2rem;
 }
 
-.thrdrow{
+.third__row{
     position: relative;
     margin-top: 15px;
-    left:22%;
+    left:0;
+    margin-left: 3.8rem;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.thrdrow{
+    margin-left: 3rem;
 }
 
 .genre{
@@ -92,10 +98,6 @@
     border-radius: 2rem;
 }
 
-.language{
-    font-size: 1.2rem;
-    color: rgb(255, 255, 255);
-}
 .status{
     font-size: 1.2rem;
     color: rgb(255, 255, 255);
@@ -116,4 +118,31 @@
     /* font-style: italic; */
     color: rgb(255, 255, 255);
     text-align: center;
+}
+.like_btn{
+    display: flex;
+    align-items: center;
+}
+
+.like_btn>button{
+    margin-left: 0.7rem;
+}
+
+.theForm{
+    background-color: rgb(0, 0, 0);
+}
+
+.reviews{
+    margin: 2rem 0;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+}
+
+.review{
+    border-left: 5px solid rgba(227, 173, 22, 0.475);
+    padding: .6rem 0 .6rem 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(60, 60, 60, 0.708);
 }

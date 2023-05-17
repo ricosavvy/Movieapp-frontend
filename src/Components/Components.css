@@ -26,7 +26,47 @@
     background-color: black; 
     color: white;
 }
+.form{
+    width: 100%;
+    color: azure;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 0 2rem;
+    justify-content: center;
+}
 
+#review{
+    padding: .5rem 1.5rem;
+    margin: 0 0rem;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    height: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+    width: 70rem;
+    border-radius: 3rem;
+}
+#stars{
+    padding-right: 1rem;
+    font-size: 2.2rem;
+    /* color: aliceblue; */
+}
+#smtbtn{
+    font-size: 1.2rem;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 2s all ease;
+}
+
+#smtbtn:hover{
+    scale: 1.3rem;
+}
 @media screen and (max-width: 1000px) {
     .movie__list{
         flex-direction: column;

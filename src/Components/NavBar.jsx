@@ -58,8 +58,9 @@ export default function PrimarySearchAppBar() {
     setValue(event.target.value);
   };
 
+  const history = useNavigate();
   const Searching = () =>{
-    const history = useNavigate();
+    history('/Search');
   }
 
   const handleProfileMenuOpen = (event) => {
@@ -170,14 +171,16 @@ export default function PrimarySearchAppBar() {
               value={value}
               onChange={handleChange}
             />
+            <Link to={`/Search/${value}`}>
               <IconButton
               size="large"
-              color="inherit"
+              style={{color:"white"}}
               aria-label="open drawer"
               onClick={Searching}
             >
               <SearchIcon />
             </IconButton>
+            </Link>
           </Search>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton

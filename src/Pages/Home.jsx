@@ -37,12 +37,11 @@ const Home = () => {
       <div className="About-Us">
           <h2>About Us</h2>
           <Container maxWidth=''>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum repudiandae a eum obcaecati! Blanditiis enim id culpa debitis explicabo, quos quasi similique saepe. Itaque alias magni corrupti in tempore autem?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo ex voluptate similique totam illum rem porr quis deleniti non harum, id ea assumenda quod ipsum, architecto ratione itaque labore eligendi!
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non animi autem praesentium. Aliquam enim natus vitaeautem unde deserunt cum atque hic, esse nulla minima, sunt, consectetur quae necessitatibus sit.
-          </Container>
+          Are you tired of endlessly scrolling through streaming platforms, unsure of what movie to watch next? Look no further! Our Movie Recommendation App is here to simplify your movie-watching experience and help you discover the perfect films tailored to your taste.
+          Whether you're a fan of action-packed blockbusters, heartwarming romances, gripping thrillers, thought-provoking documentaries, or any other genre, our app has got you covered. We curate an ever-growing collection of films from all around the world, ranging from timeless classics to the latest releases, ensuring that there's always something for everyone.
+           </Container>
           <Link to="/ContactUs">
-            <Button variant="outlined" color="primary">
+            <Button variant="outlined" color="primary" sx={{pt: 1, mt: 1}}>
               Contact Us
             </Button>
           </Link>
