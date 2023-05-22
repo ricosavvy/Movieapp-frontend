@@ -9,9 +9,9 @@ function LoginSignup() {
   };
 
   return (
-    <div>
+    <div id = "loginn">
       {/* Display either "Log In" or "Sign Up" based on login state */}
-      <h2>{login ? 'Log In' : 'Sign Up'}</h2> 
+      <h2 id = "Header">{login ? 'Log In' : 'Sign Up'}</h2> 
       <form>
         <div>
           {/* Label for email input field */}
@@ -34,9 +34,9 @@ function LoginSignup() {
           </div>
         )}
         {/* Submit button with conditional text based on login state */}
-        <button type="submit">{login ? 'Log In' : 'Sign Up'}</button> 
+        <button id = "buttton" type="submit">{login ? 'Log In' : 'Sign Up'}</button> 
       </form>
-      <div>
+      <div id = "message">
         {login ? ( // Link to toggle between log in and sign up
           <p>
             Don't have an account?{' '}
@@ -45,7 +45,7 @@ function LoginSignup() {
             </Link>
           </p>
         ) : (
-          <p>
+          <p id = "show">
             Already have an account?{' '}
             <Link onClick={handleToggle} to="#">
               Log In
