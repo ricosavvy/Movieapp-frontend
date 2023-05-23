@@ -72,9 +72,6 @@ const MovieInfo = () => {
               <button id='smtbtn' type="submit">
                 <ThumbUpIcon />
               </button>
-              <button id='smtbtn' type="submit">
-                <ThumbDownIcon />
-              </button>
           </div>
         </div>
           
