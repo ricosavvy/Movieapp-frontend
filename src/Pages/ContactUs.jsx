@@ -19,7 +19,7 @@ function ContactUs() {
             <p> frontend developer2@ Jsmovieapp.com</p>
           </div>
           <div className=" frontend developer">
-            <img src=" " alt=" frontend Developer 3" />
+            <img src="img14.jpeg " alt=" frontend Developer 3" />
             <h5> frontend Developer 3</h5>
             <p> frontend developer3@Jsmovieapp.com</p>
           </div>  
