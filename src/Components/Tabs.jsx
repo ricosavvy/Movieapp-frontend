@@ -143,7 +143,7 @@ export default function LabTabs() {
                         alt="movie id"
                         />
                         <CardContent className='cardcontent'>
-                        <Typography gutterBottom variant="h5" component="div" style={{fontFamily: 'fantasy'}}>
+                        <Typography gutterBottom variant="h5" component="div">
                             {movie ? movie.original_title: " "}
                         </Typography>
                         <Typography variant="body2" gutterBottom style={{}}>
@@ -170,7 +170,7 @@ export default function LabTabs() {
                     <CardActionArea>
                         <CardMedia className='cardmedia'
                         component="img"
-                        height="200"
+                        height="300"
                         image={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`}
                         alt="movie id"
                         />

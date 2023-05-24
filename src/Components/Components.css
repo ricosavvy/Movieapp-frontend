@@ -2,22 +2,23 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    row-gap: 20px;
 }
 
 .movie__Item{
-    border-left: .5px solid rgba(65, 87, 97, 0.403);
-    border-bottom: .5px solid rgba(55, 61, 64, 0.522);
-    border-top: .5px solid rgba(86, 48, 48, 0.522);
-    border-right: .5px solid rgba(86, 48, 48, 0.647);
+    /* border-left: .5px solid rgba(65, 87, 97, 0.403);*/
+    border-bottom: .5px solid rgba(255, 255, 255, 0.23); 
+    /* border-top: .5px solid rgba(86, 48, 48, 0.522);
+    border-right: .5px solid rgba(86, 48, 48, 0);  */
     width: fit-content;
     margin: 1.5rem; 
     height: 25rem;
     overflow: hidden;
-    transition: 3 all ease-in;
+    transition: 2 all ease-in;
 }
 
 .movie__Item:hover{
-    scale: 1.07;
+    scale: 1.03;
     /* box-shadow: 3px 3px 1px 0px rgba(132, 111, 111, 0.411); */
 }
 
@@ -25,11 +26,55 @@
     background-color: black; 
     color: white;
 }
+.form{
+    width: 100%;
+    color: azure;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 0 2rem;
+    justify-content: center;
+}
 
-/* ------------------- Container css------------------------------ */
-.Container{
-    background-color: inherit;
-    padding: 1.5rem;
-    border: 1.0px solid #505050;
-    border-radius: 1.5rem;
+#review{
+    padding: .5rem 1.5rem;
+    margin: 0 0rem;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    height: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+    width: 70rem;
+    border-radius: 3rem;
+}
+#stars{
+    padding-right: 1rem;
+    font-size: 2.2rem;
+    /* color: aliceblue; */
+}
+#smtbtn{
+    font-size: 1.2rem;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 2s all ease;
+}
+
+#smtbtn:hover{
+    scale: 1.3rem;
+}
+@media screen and (max-width: 1000px) {
+    .movie__list{
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 0;
+        
+    }
+    .movie__Item{
+        width: 100%;
+    }
 }

@@ -1,0 +1,148 @@
+
+.movie__details{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: black;
+}
+.movie__pic{
+    height: 90vh;
+}
+.movie__pic__overlay{
+    position: absolute;
+    /* padding: 5rem; */
+    bottom: 30px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* justify-content: flex-end; */
+    /* align-items: flex-start; */
+    background-image: linear-gradient(rgb(0,0,0,0), rgb(0, 0, 0));
+    opacity: 1;
+    transition: opacity .3;
+}
+
+.movie__pic>img{
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.mainrow{
+    position: absolute;
+    top: 50%;
+    padding-left: 1rem;
+    font-size: large;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+}
+
+.movie__minipic{
+    width: 20%;
+}
+
+.movie__minipic>img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 1.3rem;
+}
+
+.movie__title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 4rem;
+}
+.ratings{
+    display: flex;
+    flex-direction: row;
+}
+.strow{
+    margin-left: 1rem;
+}
+.rate{
+    display: flex;
+    margin-right: 1.2rem;
+    padding: .2rem;
+    font-size: 1.5rem;
+    border-radius: 2.5rem;
+}
+
+.tagline{
+    font-size: 2.2rem;
+}
+
+.third__row{
+    position: relative;
+    margin-top: 15px;
+    left:0;
+    margin-left: 3.8rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.thrdrow{
+    margin-left: 3rem;
+}
+
+.genre{
+    margin-top: 1rem;
+    margin-right: 1rem;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+}
+
+.status{
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+}
+
+.overview_templete{
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+}
+.overview{
+    padding: 0 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    /* font-style: italic; */
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+.like_btn{
+    display: flex;
+    align-items: center;
+}
+
+.like_btn>button{
+    margin-left: 0.7rem;
+}
+
+.theForm{
+    background-color: rgb(0, 0, 0);
+}
+
+.reviews{
+    margin: 2rem 0;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+}
+
+.review{
+    border-left: 5px solid rgba(227, 173, 22, 0.475);
+    padding: .6rem 0 .6rem 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(60, 60, 60, 0.708);
+}
