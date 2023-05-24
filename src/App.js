@@ -9,6 +9,7 @@ import ContactUs from './Pages/ContactUs';
 import MoviePage from './Pages/MoviePage';
 import { Route, Routes } from 'react-router-dom';
 import SearchedMovies from './Pages/SearchedMovies';
+import Signup from './Pages/Signup';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route exact path="/Search/:data" element={<SearchedMovies />} />
           <Route exact path="/User" element={<User />} />
           <Route exact path="/ContactUs" element={<ContactUs />} />
-          {/* <Route exact path="/ContactUs" element={<ContactUs />} /> */}
+          <Route exact path="/SignUp" element={<Signup />} />
         </Routes>
       {/* <Footer /> */}
     </Box>

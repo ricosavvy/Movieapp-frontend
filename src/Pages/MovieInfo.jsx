@@ -1,18 +1,19 @@
 import {React, useEffect, useState} from 'react';
-import Container from '../Components/Container';
 import StarIcon from '@mui/icons-material/Star';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import "./MovieInfo.css";
+import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
-import Footer from '../Components/Footer';
 import { Typography } from '@mui/material';
+import Footer from '../Components/Footer';
+import { useSelector } from 'react-redux';
 import Forms from '../Components/Form';
+import "./MovieInfo.css";
 
 
 const MovieInfo = () => {
   const[movieInfo, setMovie] = useState();
+  const[Feedback, setFeedback] = useState([]);
   const{ id } = useParams();
+  const token = useSelector((state) => state.token)
 
   useEffect(() => {
     getMovieInfo()
@@ -24,6 +25,22 @@ const MovieInfo = () => {
       .then(response => response.json())
       .then(data => setMovie(data))
   ]
+  // Returns info about the movie
+  fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
+    method: 'GET',
+    headers: {
+       Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://localhost:3000'
+    },
+  })
+  .then(response => {
+    console.log(response.json())
+  })
+  .then(data => setFeedback(data))
+  .catch(error => {
+    console.log(error)
+  })
 
   return (
     <>
@@ -69,8 +86,8 @@ const MovieInfo = () => {
             </div> 
           </div>
           <div className="like_btn">
-              <button id='smtbtn' type="submit">
-                <ThumbUpIcon />
+              <button id='smtbtns' type="submit">
+                <AddIcon />Watch Later
               </button>
           </div>
         </div>
@@ -86,20 +103,25 @@ const MovieInfo = () => {
           <div className="theForm">
             <Forms />
           </div>
-
+{/* 
           <div className="reviews">
             <div className="review">
                 <Typography variant='H6'>Overview </Typography> <br />
                 <Typography variant='subtitle1'>Overview </Typography>
                 <Typography variant='subtitle1'>Overview </Typography>
-            </div>
-            <div className="review">
-                <Typography variant='H6'>Overview </Typography> <br />
-                <Typography variant='subtitle1'>Overview </Typography>
-                <Typography variant='subtitle1'>Overview </Typography>
-            </div>
+            </div> */}
+            {
+              Feedback &&
+                Feedback.map(fdbk => (
+                  <div className="reviews">
+                    <div className='Review'>
+                      <Typography variant='subtitle2'>{fdbk.rating}</Typography> <br />
+                      <Typography variant='subtitle2'>{fdbk.review}</Typography>
+                    </div>
+                  </div>
+                ))
+            }
           </div>
-        </div>
         <Footer/>
     </>
   )

@@ -33,12 +33,46 @@ function getLabelText(value) {
 
 
 const Forms = () => {
+  const token = ''
   const formik = useFormik({
     initialValues: {
       review: '',
     },
     onSubmit: values => {
-      console.log(JSON.stringify(values.review) + " " + value)
+      // rating
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({user: '', movieId: '', rating: 4.5})
+      })
+      .then(response => {
+        console.log(response.json())
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+      // rewiews
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
+        method: 'POST',
+        headers: {
+          // 'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({user: '', movieId: '', rating: ''})
+      })
+      .then(response => {
+        console.log(response.json())
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
     },
   });
   
