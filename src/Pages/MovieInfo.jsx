@@ -1,10 +1,8 @@
 import "./MovieInfo.css";
-import * as yup from "yup"
 import { useFormik } from 'formik';
 import Box from '@mui/material/Box';
 import { setMovies } from '../state';
 import Footer from '../Components/Footer';
-import { TextField } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import { Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
@@ -14,12 +12,12 @@ import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const {id} = useParams;
 const url = window.location.href;
 
-console.log(id)
 
 const Forms = () => {
+  const { id } = useParams();
+  // console.log(id)
   const token = ''
   const formik = useFormik({
     initialValues: {
@@ -27,39 +25,40 @@ const Forms = () => {
     },
     onSubmit: values => {
       // rating
-      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Access-Control_Allow_Origin': 'https://localhost:3000'
-        },
-        body: JSON.stringify({user: '', movieId: '', rating: 4.5})
-      })
-      .then(response => {
-        console.log(response.json())
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      // fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Authorization': `Bearer ${token}`,
+      //     'Content-Type': 'application/json',
+      //     'Access-Control_Allow_Origin': 'https://localhost:3000'
+      //   },
+      //   body: JSON.stringify({user: '', movieId: '', rating: 4.5})
+      // })
+      // .then(response => {
+      //   console.log(response.json())
+      // })
+      // .catch(error => {
+      //   console.log(error)
+      // })
 
-      // rewiews
-      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
-        method: 'POST',
-        headers: {
-          // 'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Access-Control_Allow_Origin': 'https://localhost:3000'
-        },
-        body: JSON.stringify({user: '', movieId: '', rating: ''})
-      })
-      .then(response => {
-        console.log(response.json())
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      // // rewiews
+      // fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
+      //   method: 'POST',
+      //   headers: {
+      //     // 'Authorization': `Bearer ${token}`,
+      //     'Content-Type': 'application/json',
+      //     'Access-Control_Allow_Origin': 'https://localhost:3000'
+      //   },
+      //   body: JSON.stringify({userId: '', movieId: '', review: ''})
+      // })
+      // .then(response => {
+      //   console.log(response.json())
+      // })
+      // .catch(error => {
+      //   console.log(error)
+      // })
 
+      console.log(id, values.review, value)
     },
   });
   
