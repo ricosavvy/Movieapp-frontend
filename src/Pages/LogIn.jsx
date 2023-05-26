@@ -1,61 +1,73 @@
-import React, { useState } from 'react'; // Import React and useState hook
-import { Link } from 'react-router-dom'; // Import Link component from react-router-dom
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import { setLogin } from './actions';
+import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function LoginSignup() {
-  const [login, setLogin] = useState(true); // Declare a login state variable and a function to update it
+function Login() {
+  const dispatch = useDispatch();
 
-  const handleToggle = () => { // Function to toggle between log in and sign up
-    setLogin(!login);
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    onSubmit: async (values) => {
+      await fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://localhost:3000',
+        },
+        body: JSON.stringify(values),
+      })
+        .then(response => {
+          console.log(response.headers.get("access-token"), response.json());
+          dispatch(setLogin({
+            user: response.user.json(),
+            token: response.headers.get("access-token"),
+          }));
+          Navigate("/Movies");
+        })
+        .then(result => console.log(result))
+        .catch(error => {
+          console.log(error);
+        });
+        
+    },
+  });
 
   return (
-    <div id = "loginn">
-      {/* Display either "Log In" or "Sign Up" based on login state */}
-      <h2 id = "Header">{login ? 'Log In' : 'Sign Up'}</h2> 
-      <form>
+    <div id="loginn">
+      <h2 id="Header">Log In</h2>
+      <form onSubmit={formik.handleSubmit}>
         <div>
-          {/* Label for email input field */}
-          <label htmlFor="email">Email:</label> 
-          {/* Email input field */}
-          <input type="email" id="email" name="email" required />
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
         </div>
         <div>
-          {/* Label for password input field */}
-          <label htmlFor="password">Password:</label> 
-          {/* Password input field */}
-          <input type="password" id="password" name="password" required /> 
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
         </div>
-        {!login && ( // Show confirm password field if user is signing up
-          <div>
-            {/* Label for confirm password input field */}
-            <label htmlFor="confirmPassword">Confirm Password:</label> 
-            {/* Confirm password input field */}
-            <input type="password" id="confirmPassword" name="confirmPassword" required /> 
-          </div>
-        )}
-        {/* Submit button with conditional text based on login state */}
-        <button id = "buttton" type="submit">{login ? 'Log In' : 'Sign Up'}</button> 
+        <button id="buttton" type="submit">Log In</button>
       </form>
-      <div id = "message">
-        {login ? ( // Link to toggle between log in and sign up
-          <p>
-            Don't have an account?{' '}
-            <Link onClick={handleToggle} to="#">
-              Sign Up
-            </Link>
-          </p>
-        ) : (
-          <p id = "show">
-            Already have an account?{' '}
-            <Link onClick={handleToggle} to="#">
-              Log In
-            </Link>
-          </p>
-        )}
-      </div>
     </div>
   );
 }
 
-export default LoginSignup; // Export the LoginSignup component
-
+export default Login;
