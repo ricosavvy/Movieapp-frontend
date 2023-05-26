@@ -60,4 +60,4 @@ const developers = [
   );
 };
 
-export default ContactUs;
+export default ContactUs
