@@ -1,6 +1,6 @@
 import React from 'react';
 import './ContactUs.css';
-import Slider from 'react-slick';
+
 
 function ContactUs() {
   const developers = [
@@ -41,14 +41,16 @@ function ContactUs() {
       image: 'img14.jpeg',
     },
   ];
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
+  const [currentDeveloper, setCurrentDeveloper] = useState(0);
+
+  const handleNextDeveloper = () => {
+    setCurrentDeveloper((prevDeveloper) => (prevDeveloper + 1) % developers.length);
+  };
+
+  const handlePreviousDeveloper = () => {
+    setCurrentDeveloper((prevDeveloper) =>
+      prevDeveloper === 0 ? developers.length - 1 : prevDeveloper - 1
+    );
   };
   return (
     <div className="contact-us">
@@ -66,17 +68,18 @@ function ContactUs() {
         <button type="submit">Send</button>
       </form>
 
+      
       <div className="developers">
         <h2>Developers:</h2>
-        <Slider {...settings}>
-          {developers.map((developer) => (
-            <div className="developer" key={developer.id}>
-              <img src={AuthenticatorAssertionResponse.img} alt={developer.name} />
-              <h3>{developer.name}</h3>
-              <p>{developer.email}</p>
-            </div>
-          ))}
-        </Slider>
+        <div className="developer">
+          <img src={developers[currentDeveloper].image} alt={developers[currentDeveloper].name} />
+          <h3>{developers[currentDeveloper].name}</h3>
+          <p>{developers[currentDeveloper].email}</p>
+        </div>
+        <div className="slider-buttons">
+          <button onClick={handlePreviousDeveloper}>&lt;</button>
+          <button onClick={handleNextDeveloper}>&gt;</button>
+        </div>
       </div>
     </div>
   );

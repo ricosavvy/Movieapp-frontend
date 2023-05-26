@@ -1,110 +1,66 @@
+
 .contact-us {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.contact-us h1 {
-  text-align: center;
+.contact-info {
+  flex: 1;
+  margin-right: 2rem;
 }
 
-.contact-us form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-
-.contact-us label {
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-.contact-us input,
-.contact-us textarea {
-  width: 300px;
-  margin-top: 10px;
-  padding: 5px;
-}
-
-.contact-us button {
-  margin-top: 20px;
-  background-color: #0070f3;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.contact-us button:hover {
-  background-color: #0057b3;
-}
-
-.contact-us .developers {
-  margin-top: 50px;
-}
-
-.contact-us .developer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.contact-us .developer img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.contact-us .developer h3 {
+.contact-info h2 {
   margin-top: 0;
 }
 
-.contact-us .developer p {
-  margin-top: 0;
-  color: #666;
+.contact-info ul {
+  list-style: none;
+  padding: 0;
 }
 
-/* Styles for the slider */
-.slick-slide {
-  text-align: center;
+.contact-info li {
+  margin-bottom: 1rem;
 }
 
-.slick-prev,
-.slick-next {
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-  width: 30px;
-  height: 30px;
-  transform: translateY(-50%);
-  background-color: #0070f3;
+.contact-info li strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form {
+  flex: 2;
+}
+
+.contact-form label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.contact-form button {
+  background-color: #007bff;
   color: #fff;
-  font-size: 24px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s;
 }
 
-.slick-prev:hover,
-.slick-next:hover {
-  background-color: #0057b3;
-}
-
-.slick-prev {
-  left: 10px;
-}
-
-.slick-next {
-  right: 10px;
+.contact-form button:hover {
+  background-color: #0062cc;
 }
 
 
