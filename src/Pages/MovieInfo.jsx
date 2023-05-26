@@ -4,17 +4,20 @@ import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
 import { Typography } from '@mui/material';
 import Footer from '../Components/Footer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMovies } from '../state';
 import Forms from '../Components/Form';
 import "./MovieInfo.css";
 
 
 const MovieInfo = () => {
+  const{ id } = useParams();
+  const dispatch = useDispatch();
   const[movieInfo, setMovie] = useState();
   const[Feedback, setFeedback] = useState([]);
-  const{ id } = useParams();
   const token = useSelector((state) => state.token)
 
+  console.log(token)
   useEffect(() => {
     getMovieInfo()
     window.scrollTo(0,0)
@@ -25,6 +28,13 @@ const MovieInfo = () => {
       .then(response => response.json())
       .then(data => setMovie(data))
   ]
+
+  const movielistsubmitting = () =>{
+    dispatch(setMovies({
+      id: id,
+      name: movieInfo.original_title
+    }))
+  }
   // Returns info about the movie
   fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
     method: 'GET',
@@ -86,7 +96,7 @@ const MovieInfo = () => {
             </div> 
           </div>
           <div className="like_btn">
-              <button id='smtbtns' type="submit">
+              <button id='smtbtns' type="submit" value={true} onClick={movielistsubmitting}> 
                 <AddIcon />Watch Later
               </button>
           </div>

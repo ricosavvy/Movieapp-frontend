@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 import SendIcon from '@mui/icons-material/Send';
 import { useFormik } from 'formik';
 import * as yup from "yup"
-import { json, useNavigate } from 'react-router-dom';
+import { json, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setMovies } from "../state";
 import { TextField } from '@mui/material';
@@ -13,6 +13,12 @@ import { TextField } from '@mui/material';
 const reviewSchema = yup.object().shape({
     review: yup.string().required("required")
 })
+
+
+const {id} = useParams;
+const url = window.location.href;
+
+console.log()
 
 const labels = {
   0.5: 'Useless',
@@ -31,7 +37,7 @@ function getLabelText(value) {
   return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
 
-
+console.log(id)
 const Forms = () => {
   const token = ''
   const formik = useFormik({
