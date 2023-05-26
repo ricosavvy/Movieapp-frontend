@@ -56,21 +56,17 @@ function ContactUs() {
 
         <button type="submit">Send</button>
       </form>
-
-      
-      <div className="developers">
+       <div className="developers">
         <h2>Developers:</h2>
-        <div className="developer">
-          <img src={developers[currentDeveloper].image} alt={developers[currentDeveloper].name} />
-          <h3>{developers[currentDeveloper].name}</h3>
-          <p>{developers[currentDeveloper].email}</p>
-        </div>
-        <div className="slider-buttons">
-          <button onClick={handlePreviousDeveloper}>&lt;</button>
-          <button onClick={handleNextDeveloper}>&gt;</button>
+        {developers.map((developer) => (
+          <div className="developer" key={developer.id}>
+            <img src={developer.image} alt={developer.name} />
+            <h3>{developer.name}</h3>
+            <p>{developer.email}</p>
+          </div>
+        ))}
         </div>
       </div>
-    </div>
   );
 }
 
