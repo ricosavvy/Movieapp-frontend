@@ -1,5 +1,6 @@
 import React from 'react';
 import './ContactUs.css';
+import Slider from 'react-slick';
 
 function ContactUs() {
   const developers = [
@@ -40,7 +41,15 @@ function ContactUs() {
       image: 'img14.jpeg',
     },
   ];
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
   return (
     <div className="contact-us">
       <h1>Contact Us</h1>
@@ -59,13 +68,15 @@ function ContactUs() {
 
       <div className="developers">
         <h2>Developers:</h2>
-        {developers.map((developer) => (
-          <div className="developer" key={developer.id}>
-            <img src={developer.image} alt={developer.name} />
-            <h3>{developer.name}</h3>
-            <p>{developer.email}</p>
-          </div>
-        ))}
+        <Slider {...settings}>
+          {developers.map((developer) => (
+            <div className="developer" key={developer.id}>
+              <img src={AuthenticatorAssertionResponse.img} alt={developer.name} />
+              <h3>{developer.name}</h3>
+              <p>{developer.email}</p>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );
