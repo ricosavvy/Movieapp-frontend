@@ -1,5 +1,5 @@
 import React from 'react';
-import './ContactUsPage.css';
+import './ContactUs.css';
 
 const developers = [
   function ContactUs() {
