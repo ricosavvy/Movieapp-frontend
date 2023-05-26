@@ -46,7 +46,7 @@ import './ContactUs.css';
       <div className="developer-list">
         {developers.map((developer, index) => (
           <div key={index} className="developer-card">
-            <img src={developer.image} alt={developer.name} />
+            <img src={developer.image} id='dev_img' alt={developer.name} />
             <div className="developer-details">
               <h2>{developer.name}</h2>
               <p>Email: {developer.email}</p>

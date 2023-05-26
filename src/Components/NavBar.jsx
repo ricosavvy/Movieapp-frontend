@@ -97,10 +97,11 @@ export default function PrimarySearchAppBar() {
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
+      <MenuItem component={Link} to='/Movies'>Home</MenuItem>
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
       <Divider/>
       <MenuItem component={Link} to='/ContactUs'>Contact Us</MenuItem>
-      <MenuItem component={Link} to='/Login'>Logout</MenuItem>
+      <MenuItem component={Link} to='/LogIn'>Logout</MenuItem>
     </Menu>
   );
 

@@ -77,16 +77,12 @@
 .third__row{
     position: relative;
     margin-top: 15px;
+    margin-left: 21rem;
+    margin-right: 2rem;
     left:0;
-    margin-left: 3.8rem;
     display: flex;
-    justify-content: center;
     flex-direction: row;
-    justify-content: space-around;
-}
-
-.thrdrow{
-    margin-left: 3rem;
+    justify-content: space-between;
 }
 
 .genre{
@@ -130,6 +126,10 @@
 
 .theForm{
     background-color: rgb(0, 0, 0);
+}
+
+.form{
+    display: flex !important;
 }
 
 .reviews{

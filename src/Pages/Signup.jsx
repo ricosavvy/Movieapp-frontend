@@ -1,14 +1,14 @@
-<<<<<<< HEAD
 import React from 'react';
 import { useFormik } from 'formik';
-import { navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 function SignUp() {
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       username: '',
       password: '',
       email: '',
@@ -24,7 +24,7 @@ function SignUp() {
       })
         .then(response => {
           console.log(response.json());
-          navigate("/LogIn"); // Changed from Navigate to navigate (lowercase)
+          Navigate("/LogIn"); // Changed from Navigate to navigate (lowercase)
         })
         .catch(error => {
           console.log(error);
@@ -38,49 +38,65 @@ function SignUp() {
       <h2 id="Header">Sign Up</h2>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <label htmlFor="firstName">First Name:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
+            id="username"
+            name="username"
             required
             onChange={formik.handleChange}
-            value={formik.values.firstName}
+            value={formik.values.username}
           />
         </div>
         <div>
-          <label htmlFor="lastName">Last Name:</label>
+          <label htmlFor="firstname">First Name:</label>
           <input
             type="text"
-            id="lastName"
-            name="lastName"
+            id="firstname"
+            name="firstname"
             required
             onChange={formik.handleChange}
-            value={formik.values.lastName}
+            value={formik.values.firstname}
           />
         </div>
-        {/* Rest of the form */}
-        <button type="submit">Submit</button>
+        <div>
+          <label htmlFor="lastname">Last Name:</label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.lastname}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+        </div>
+        <button id="buttton" type="submit">Submit</button>
       </form>
+       <Typography color={'white'}>Already have an account? </Typography><Link to='/LogIn' id='togbtn'>Login</Link>
     </div>
-      <Link to='/LogIn'>login</Link>
   );
 }
 
 export default SignUp;
-=======
-import React from 'react'
-import { useFormik } from 'formik';
-import { Link, Navigate } from 'react-router-dom';
-import './pages.css'
-
-const SignupForm = () => {
-  // Note that we have to initialize ALL of fields with values. These
-  // could come from props, but since we don’t want to prefill this form,
-  // we just use an empty string. If we don’t do this, React will yell
-  // at us.
-  
-};
-
-export default SignupForm 
->>>>>>> 134b2941d7b2a2e7e82cbf55b8bcd2b402cc3f6f
