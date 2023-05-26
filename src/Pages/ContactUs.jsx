@@ -39,15 +39,15 @@ import './ContactUs.css';
         image: 'img14.jpeg',
       },
     ];
-   const ContactUs = () => {
-      return (
+     const ContactUs = () => {
+  return (
     <div className="contact-us">
       <h1>Contact Us</h1>
-      <div className="developer-list">
+      <div className="developers">
         {developers.map((developer, index) => (
-          <div key={index} className="developer-card">
+          <div className="developer" key={index}>
             <img src={developer.image} alt={developer.name} />
-            <div className="developer-details">
+            <div className="reflection">
               <h2>{developer.name}</h2>
               <p>Email: {developer.email}</p>
             </div>

@@ -1,46 +1,61 @@
-.Contact-Us{
+.contact-us {
   text-align: center;
 }
 
-.developer-list {
+.developers {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
   margin-top: 20px;
 }
 
-.developer-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.developer {
+  position: relative;
   width: 200px;
+  height: 300px;
+  margin: 10px;
 }
 
-.developer-card img {
-  width: 150px;
-  height: 150px;
+.developer img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 10px;
+  border-radius: 8px;
 }
 
-.developer-details {
-  text-align: center;
+.developer .reflection {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
 }
 
-.developer-details h2 {
+.developer:hover .reflection {
+  transform: translateY(0);
+}
+
+.developer h2 {
+  font-size: 18px;
   margin-bottom: 5px;
 }
 
-.developer-details p {
+.developer p {
   font-size: 14px;
-  color: gray;
 }
-img {
-  width: 500px;
-  height: 600px;
-}
+
+
+
+
+
+
+
 
 
 
