@@ -10,14 +10,11 @@
 }
 .movie__pic__overlay{
     position: absolute;
-    /* padding: 5rem; */
     bottom: 30px;
     height: 80%;
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* justify-content: flex-end; */
-    /* align-items: flex-start; */
     background-image: linear-gradient(rgb(0,0,0,0), rgb(0, 0, 0));
     opacity: 1;
     transition: opacity .3;
@@ -77,8 +74,8 @@
 .third__row{
     position: relative;
     margin-top: 15px;
-    margin-left: 21rem;
-    margin-right: 2rem;
+    margin-left: 19rem;
+    margin-right: 1rem;
     left:0;
     display: flex;
     flex-direction: row;
@@ -128,8 +125,9 @@
     background-color: rgb(0, 0, 0);
 }
 
-.form{
+.form>form{
     display: flex !important;
+    justify-content: center;
 }
 
 .reviews{
@@ -163,4 +161,48 @@
     scale: 1.2rem;
     color: black;
     background-color: white;
+}
+#smtbtn{
+    font-size: 1.2rem;
+    border-radius: 50%;
+    height: 3rem;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 2s all ease;
+}
+
+#smtbtn:hover{
+    scale: 1.3rem;
+}
+
+#review{
+    padding: .5rem 1.5rem;
+    margin: 0 0rem;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    height: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+    width: 70rem;
+    border-radius: 3rem;
+}
+#stars{
+    padding-right: 1rem;
+    font-size: 2.2rem;
+    color: rgb(255, 255, 255);
+}
+
+@media screen and (min-width: 740px) and  (max-width: 1000px){
+    .form>form{
+        display: flex;
+        flex-direction: column !important;
+    }
+    .third__row{
+        left: -20%;
+        padding: 2.rem;
+        justify-content: space-around;
+    }
 }

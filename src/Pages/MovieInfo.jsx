@@ -14,31 +14,8 @@ import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const reviewSchema = yup.object().shape({
-  review: yup.string().required("required")
-})
-
 const {id} = useParams;
 const url = window.location.href;
-
-console.log()
-
-const labels = {
-  0.5: 'Useless',
-  1: 'Useless+',
-  1.5: 'Poor',
-  2: 'Poor+',
-  2.5: 'Ok',
-  3: 'Ok+',
-  3.5: 'Good',
-  4: 'Good+',
-  4.5: 'Excellent',
-  5: 'Excellent+',
-};
-
-function getLabelText(value) {
-  return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
-}
 
 console.log(id)
 
@@ -91,44 +68,18 @@ const Forms = () => {
     return(
     <div className="form">
       <form onSubmit={formik.handleSubmit}>
-              <Box
-              sx={{
-                width: 1500,
-                display: 'flex',
-                alignItems: 'center',
-                }}
-              >
-                <input
-                  id="review"
-                  name="review"
-                  type="review"
-                  onChange={formik.handleChange}
-                  value={formik.values.review}
-                />
-                <Rating
-                  id='stars'
-                  name="hover-feedback"
-                  value={value}
-                  precision={0.5}
-                  getLabelText={getLabelText}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                  }}
-                  onChangeActive={(event, newHover) => {
-                    setHover(newHover);
-                  }}
-                  emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-                />
-              <button id='smtbtn' type="submit">
-                <SendIcon />
-              </button>
-              </Box>
-          </form>
+          <Box sx={{width: 1200, display: 'flex', alignItems: 'center',}}>
+              <input id="review" name="review" type="review" onChange={formik.handleChange} value={formik.values.review} />
+              <Rating id='stars' name="hover-feedback" value={value} precision={0.5} onChange={(event, newValue) => { setValue(newValue); }} onChangeActive={(event, newHover) => { setHover(newHover);}} emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />} />
+              <button id='smtbtn' type="submit"><SendIcon /></button>
+          </Box>
+      </form>
     </div>
     )
-                }      
+ }      
 
 const MovieInfo = () => {
+
   const{ id } = useParams();
   const dispatch = useDispatch();
   const[movieInfo, setMovie] = useState();
@@ -148,10 +99,12 @@ const MovieInfo = () => {
   ]
 
   const movielistsubmitting = () =>{
+    const name = movieInfo.original_title;
+    const movies = { id, name}
     dispatch(setMovies({
-      id: id,
-      name: movieInfo.original_title
+      movies
     }))
+    // console.log(Movie)
   }
   // Returns info about the movie
   fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {

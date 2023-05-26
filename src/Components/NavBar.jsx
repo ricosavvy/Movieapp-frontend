@@ -14,7 +14,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link, useNavigate } from 'react-router-dom';
 import Divider from '@mui/material/Divider';
-// import User from '../Pages/User';
+import { useDispatch } from 'react-redux';
+import { setLogout } from '../state';
 
 const Search = styled('div')(({ theme }) => ({
       position: 'relative',
@@ -81,6 +82,10 @@ export default function PrimarySearchAppBar() {
   };
 
   const menuId = 'primary-search-account-menu';
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(setLogout())
+  }
   const renderMenu = (
       <Menu
         anchorEl={anchorEl}
@@ -101,7 +106,7 @@ export default function PrimarySearchAppBar() {
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
       <Divider/>
       <MenuItem component={Link} to='/ContactUs'>Contact Us</MenuItem>
-      <MenuItem component={Link} to='/LogIn'>Logout</MenuItem>
+      <MenuItem component={Link} to='/LogIn' onClick={logout}>Logout</MenuItem>
     </Menu>
   );
 

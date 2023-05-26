@@ -41,7 +41,7 @@ const Home = () => {
           Whether you're a fan of action-packed blockbusters, heartwarming romances, gripping thrillers, thought-provoking documentaries, or any other genre, our app has got you covered. We curate an ever-growing collection of films from all around the world, ranging from timeless classics to the latest releases, ensuring that there's always something for everyone.
            </Container>
           <Link to="/ContactUs">
-            <Button variant="outlined" color="primary" sx={{pt: 1, mt: 1}}>
+            <Button variant="outlined" style={{color: 'black'}} sx={{pt: 1, mt: 1}}>
               Contact Us
             </Button>
           </Link>
