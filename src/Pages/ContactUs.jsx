@@ -1,9 +1,7 @@
 import React from 'react';
 import './ContactUs.css';
 
-const developers = [
-  function ContactUs() {
-    const developers = [
+ const developers = [
       {
         id: 1,
         name: 'CLEMENTINA NIYINAGIRA',
@@ -57,7 +55,6 @@ const developers = [
         ))}
       </div>
     </div>
-  );
-};
-
-export default ContactUs
+    );
+  };
+export default ContactUs;
