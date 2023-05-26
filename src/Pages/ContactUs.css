@@ -37,7 +37,10 @@
   font-size: 14px;
   color: gray;
 }
-
+img {
+  width: 500px;
+  height: 600px;
+}
 
 
 
