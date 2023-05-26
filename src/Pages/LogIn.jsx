@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { setLogin } from './actions';
@@ -71,3 +72,16 @@ function Login() {
 }
 
 export default Login;
+=======
+import { useFormik } from 'formik';
+import { Link, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../state';
+import './pages.css'
+
+const LogInForm = () => {
+  
+};
+
+export default LogInForm
+>>>>>>> 134b2941d7b2a2e7e82cbf55b8bcd2b402cc3f6f

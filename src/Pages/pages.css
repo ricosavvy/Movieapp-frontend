@@ -174,7 +174,7 @@
   }
   
   label {
-    color: white;
+    color: rgb(255, 255, 255);
   }
   
   input[type="email"],
@@ -182,7 +182,6 @@
     width: 200px;
     padding: 5px;
     background-color: rgba(121, 81, 81, 0.8); /* Cloudy background for input fields */
-    
     
   }
   
@@ -205,4 +204,11 @@
   #message p {
     margin-bottom: 0;
   }
-  
+
+.forms{
+   display: flex;
+   align-items: center;
+   justify-content: center; 
+   margin-top: 15%;
+   margin-left: 15%;
+}

@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 import SendIcon from '@mui/icons-material/Send';
 import { useFormik } from 'formik';
 import * as yup from "yup"
-import { json, useNavigate } from 'react-router-dom';
+import { json, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setMovies } from "../state";
 import { TextField } from '@mui/material';
@@ -13,6 +13,12 @@ import { TextField } from '@mui/material';
 const reviewSchema = yup.object().shape({
     review: yup.string().required("required")
 })
+
+
+const {id} = useParams;
+const url = window.location.href;
+
+console.log()
 
 const labels = {
   0.5: 'Useless',
@@ -31,14 +37,48 @@ function getLabelText(value) {
   return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
 
-
+console.log(id)
 const Forms = () => {
+  const token = ''
   const formik = useFormik({
     initialValues: {
       review: '',
     },
     onSubmit: values => {
-      console.log(JSON.stringify(values.review) + " " + value)
+      // rating
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({user: '', movieId: '', rating: 4.5})
+      })
+      .then(response => {
+        console.log(response.json())
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+      // rewiews
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
+        method: 'POST',
+        headers: {
+          // 'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({user: '', movieId: '', rating: ''})
+      })
+      .then(response => {
+        console.log(response.json())
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
     },
   });
   

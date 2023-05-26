@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     user: null,
     token: null,
-    likedmovies: []
+    watchlater: null
 };
 
 export const authSlice = createSlice({
@@ -19,14 +19,14 @@ export const authSlice = createSlice({
             state.token = null;
         },
         setMovies: (state, action) => {
-            state.likedmovies = action.payload.posts;
+            state.watchlater = action.payload.movies;
         },
         setMovie: (state, action) => {
-            const updatedLikedMovie = state.likedmovies.map((likedmovies) => {
-                if(likedmovies.id === action.payload.likedmovies) return action.payload.likedmovies;
-                return likedmovies;
+            const updatedwatch = state.watchlater.map((watchlater) => {
+                if(watchlater.id === action.payload.watchlater) return action.payload.watchlater;
+                return watchlater;
             });
-            state.likedmovies = updatedLikedMovie;
+            state.watchlater = updatedwatch;
         }
     }
 })
