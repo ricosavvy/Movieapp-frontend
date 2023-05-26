@@ -41,17 +41,6 @@ function ContactUs() {
       image: 'img14.jpeg',
     },
   ];
-  const [currentDeveloper, setCurrentDeveloper] = useState(0);
-
-  const handleNextDeveloper = () => {
-    setCurrentDeveloper((prevDeveloper) => (prevDeveloper + 1) % developers.length);
-  };
-
-  const handlePreviousDeveloper = () => {
-    setCurrentDeveloper((prevDeveloper) =>
-      prevDeveloper === 0 ? developers.length - 1 : prevDeveloper - 1
-    );
-  };
   return (
     <div className="contact-us">
       <h1>Contact Us</h1>
