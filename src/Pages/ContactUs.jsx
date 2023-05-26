@@ -13,7 +13,7 @@ const developers = [
       {
         id: 2,
         name: 'PATRICK LUNGU',
-        email: 'devlop2@movieapp.com',
+        email: 'patricklungu99@gmail.com',
         image: 'img11.jpeg',
       },
       {
@@ -41,9 +41,9 @@ const developers = [
         image: 'img14.jpeg',
       },
     ];
-   const ContactUsPage = () => {
+   const ContactUs = () => {
       return (
-    <div className="contact-us-page">
+    <div className="contact-us">
       <h1>Contact Us</h1>
       <div className="developer-list">
         {developers.map((developer, index) => (
@@ -60,4 +60,4 @@ const developers = [
   );
 };
 
-export default ContactUsPage;
+export default ContactUs;
