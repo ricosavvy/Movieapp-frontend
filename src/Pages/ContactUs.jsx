@@ -7,7 +7,7 @@ import img11 from '../assets/img/img11.jpeg'
 import img12 from '../assets/img/img12.jpeg'
 import img9 from '../assets/img/img9.jpeg'
 import Resizer from 'react-image-file-resizer';
- 
+
 const developers = [
       {
         id: 1,
