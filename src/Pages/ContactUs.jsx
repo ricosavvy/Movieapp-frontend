@@ -6,7 +6,7 @@ import img10 from '../assets/img/img10.jpeg'
 import img11 from '../assets/img/img11.jpeg'
 import img12 from '../assets/img/img12.jpeg'
 import img9 from '../assets/img/img9.jpeg'
-import ImageCompressor from 'react-image-compressor';
+import Resizer from 'react-image-file-resizer';
  
 const developers = [
       {
@@ -47,36 +47,33 @@ const developers = [
       },
     ];
      const ContactUs = () => {
-      const [compressedImage, setCompressedImage] = useState(null);
+  const handleImageChange = (event) => {
+    const imageFile = event.target.files[0];
 
-      const handleImageChange = async (event) => {
-        const imageFile = event.target.files[0];
-        
-        try {
-          const compressedFile = await ImageCompressor(imageFile, {
-            quality: 0.6, // Set the desired quality (0.1 to 1.0)
-            maxWidth: 800, // Set the maximum width of the compressed image
-            maxHeight: 600, // Set the maximum height of the compressed image
-          });
-    
-          setCompressedImage(compressedFile);
-        } catch (error) {
-          console.error('Image compression failed:', error);
-        }
-      };
-    
-      
-        <div>
-          <h1>Contact Us Page</h1>
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-    
-          {compressedImage && (
-            <div>
-              <h2>Compressed Image</h2>
-              <img src={URL.createObjectURL(compressedImage)} alt="Compressed" />
-            </div>
-          )}
-           </div>
+    Resizer.imageFileResizer(
+      imageFile,
+      800, // Set the maximum width
+      600, // Set the maximum height
+      'JPEG', // Output format (JPEG, PNG, or WEBP)
+      60, // Set the desired quality (0 to 100)
+      0, // Rotate the image (0 = no rotation, 90 = rotate 90 degrees clockwise, 180 = rotate 180 degrees, 270 = rotate 270 degrees clockwise)
+      (resizedImage) => {
+        // Handle the resized image
+        // You can upload or display the resized image here
+        console.log('Resized image:', resizedImage);
+      },
+      'base64', // Output type (base64, blob, file)
+      800, // Set the maximum file size (in kilobytes)
+      600 // Set the maximum file size (in kilobytes)
+    );
+  };
+
+  return (
+    <div>
+      <h1>Contact Us </h1>
+      <input type="file" accept="image/*" onChange={handleImageChange} />
+    </div>
+     );
         return (
             <div className="contact-us">
              <h1>Contact Us</h1>
