@@ -60,7 +60,16 @@ const ContactUs = () => {
             </div>
           </div>
         ))}
-      </div>
+         </div>
+      <form className="contact-form" onSubmit={handleFormSubmit}>
+        <h3>Leave us a message</h3>
+        <textarea
+          placeholder="Your message"
+          value={message}
+          onChange={handleInputChange}
+        ></textarea>
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 };
