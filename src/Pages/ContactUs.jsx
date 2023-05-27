@@ -44,76 +44,25 @@ const developers = [
         email: 'tomchileshe191@gmail.com',
         image: `${img14}`,
       },
-    ];
-     const ContactUs = () => {
-  const handleImageChange = (event) => {
-    const imageFile = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      const image = new Image();
-
-      image.onload = () => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
-        const maxWidth = 800; // Set the maximum width
-        const maxHeight = 600; // Set the maximum height
-
-        let width = image.width;
-        let height = image.height;
-
-        if (width > height) {
-          if (width > maxWidth) {
-            height *= maxWidth / width;
-            width = maxWidth;
-          }
-        } else {
-          if (height > maxHeight) {
-            width *= maxHeight / height;
-            height = maxHeight;
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-
-        context.drawImage(image, 0, 0, width, height);
-
-        const resizedImage = canvas.toDataURL('image/jpeg', 0.6); // Output format (JPEG) and quality (0.6)
-
-        // Handle the resized image
-        // You can upload or display the resized image here
-        console.log('Resized image:', resizedImage);
-      };
-
-      image.src = e.target.result;
-    };
-
-    reader.readAsDataURL(imageFile);
-  };
-
+      // Add more developers here...
+    ];    
+const ContactUs = () => {
   return (
-    <div>
-      <h1>Contact Us Page</h1>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-    </div>
-  );
-        return (
-            <div className="contact-us">
-             <h1>Contact Us</h1>
-             <div className="developers">
-             {developers.map((developer, index) => (
-              <div className="developer" key={index}>
-               <img src={developer.image} id='dev_img' alt={developer.name} />
-               <div className="reflection">
-              <h2>{developer.name}</h2>
-              <p>Email: {developer.email}</p>
+    <div className="contact-us">
+      <h2>Contact Us</h2>
+      <div className="developers">
+        {developers.map((developer, index) => (
+          <div className="developer" key={index}>
+            <img src={developer.image} alt={developer.name} />
+            <div className="info">
+              <h3>{developer.name}</h3>
+              <p>{developer.email}</p>
             </div>
           </div>
-       ))}
-          </div>
-       </div>
-      )
-    };
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default ContactUs;
