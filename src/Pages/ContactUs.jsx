@@ -6,7 +6,6 @@ import img10 from '../assets/img/img10.jpeg'
 import img11 from '../assets/img/img11.jpeg'
 import img12 from '../assets/img/img12.jpeg'
 import img9 from '../assets/img/img9.jpeg'
-import Resizer from 'react-image-file-resizer';
 
 const developers = [
       {
@@ -49,31 +48,57 @@ const developers = [
      const ContactUs = () => {
   const handleImageChange = (event) => {
     const imageFile = event.target.files[0];
+    const reader = new FileReader();
 
-    Resizer.imageFileResizer(
-      imageFile,
-      800, // Set the maximum width
-      600, // Set the maximum height
-      'JPEG', // Output format (JPEG, PNG, or WEBP)
-      60, // Set the desired quality (0 to 100)
-      0, // Rotate the image (0 = no rotation, 90 = rotate 90 degrees clockwise, 180 = rotate 180 degrees, 270 = rotate 270 degrees clockwise)
-      (resizedImage) => {
+    reader.onload = (e) => {
+      const image = new Image();
+
+      image.onload = () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        const maxWidth = 800; // Set the maximum width
+        const maxHeight = 600; // Set the maximum height
+
+        let width = image.width;
+        let height = image.height;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        context.drawImage(image, 0, 0, width, height);
+
+        const resizedImage = canvas.toDataURL('image/jpeg', 0.6); // Output format (JPEG) and quality (0.6)
+
         // Handle the resized image
         // You can upload or display the resized image here
         console.log('Resized image:', resizedImage);
-      },
-      'base64', // Output type (base64, blob, file)
-      800, // Set the maximum file size (in kilobytes)
-      600 // Set the maximum file size (in kilobytes)
-    );
+      };
+
+      image.src = e.target.result;
+    };
+
+    reader.readAsDataURL(imageFile);
   };
 
   return (
     <div>
-      <h1>Contact Us </h1>
+      <h1>Contact Us Page</h1>
       <input type="file" accept="image/*" onChange={handleImageChange} />
     </div>
-     );
+  );
         return (
             <div className="contact-us">
              <h1>Contact Us</h1>
@@ -90,5 +115,5 @@ const developers = [
           </div>
        </div>
       )
-  };
+    };
 export default ContactUs;
