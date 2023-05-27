@@ -1,12 +1,13 @@
 import React from 'react';
 import './ContactUs.css';
+import img13 from '../assets/img/img13.jpeg' 
 
  const developers = [
       {
         id: 1,
         name: 'CLEMENTINA NIYINAGIRA',
         email: 'clementinaniyinagira03@gmail.com',
-        image: 'img13.jpeg',
+        image: `${img13}`,
       },
       {
         id: 2,
