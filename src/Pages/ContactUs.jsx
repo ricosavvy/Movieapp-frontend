@@ -63,7 +63,59 @@ const developers = [
       </div>
       );
    };
+   function ContactUs() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
   
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("Name: ", name);
+      console.log("Email: ", email);
+      console.log("Message: ", message);
+      // Add code to send the message to your server or email service
+    };
+  
+    return (
+      <div>
+        <h1 style={{ textAlign: "center" }}>Contact Us</h1>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column", width: "300px", margin: "0 auto" }}
+        >
+          <label style={{ marginBottom: "10px" }}>
+            Name:
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              style={{ marginTop: "5px" }}
+            />
+          </label>
+          <label style={{ marginBottom: "10px" }}>
+            Email:
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{ marginTop: "5px" }}
+            />
+          </label>
+          <label style={{ marginBottom: "10px" }}>
+            Message:
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              style={{ marginTop: "5px" }}
+            />
+          </label>
+          <button type="submit" style={{ alignSelf: "center" }}>
+            Submit
+          </button>
+        </form>
+        </div>
+  );
+}
   export default ContactUs;
   
       
