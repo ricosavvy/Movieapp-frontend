@@ -47,8 +47,8 @@ const developers = [
     ]
     
     
-  return (
-    <div className="contact-us">
+      return (
+      <div className="contact-us">
       {developers.map((developer, index) => (
         <div className="contact-card" key={index}>
           <img className="developer-image" src={developer.image} alt={developer.name} />
