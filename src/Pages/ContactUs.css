@@ -35,3 +35,35 @@
 .info p {
   margin: 5px 0;
 }
+.contact-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact-heading {
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  margin-top: 10px;
+}
+
+.contact-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.contact-textarea {
+  height: 120px;
+}
+
+.contact-button {
+  margin-top: 10px;
+  align-self: flex-start;
+}
