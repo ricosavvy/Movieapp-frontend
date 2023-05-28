@@ -44,34 +44,47 @@ const developers = [
         email: 'tomchileshe191@gmail.com',
         image: `${img14}`,
       },
-      // Add more developers here...
-    ];    
-const ContactUs = () => {
-  return (
-    <div className="contact-us">
-      <h2>Contact Us</h2>
-      <div className="developers">
-        {developers.map((developer, index) => (
-          <div className="developer" key={index}>
-            <img src={developer.image} alt={developer.name} />
-            <div className="info">
-              <h3>{developer.name}</h3>
-              <p>{developer.email}</p>
+    ]
+      const ContactUs = () => {
+        const [message, setMessage] = useState('');
+      
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          // Process the message here (e.g., send an email)
+          console.log(`Message: ${message}`);
+          setMessage('');
+        };
+      
+        const handleChange = (e) => {
+          setMessage(e.target.value);
+        };
+      
+        return (
+          <div className="contact-us">
+            <h2>Contact Us</h2>
+            <div className="developers">
+              {developers.map((developer, index) => (
+                <div className="developer" key={index}>
+                  <img src={developer.image} alt={developer.name} />
+                  <div className="info">
+                    <h3>{developer.name}</h3>
+                    <p>{developer.email}</p>
+                  </div>
+                </div>
+              ))}
             </div>
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <h3>Leave us a message</h3>
+              <textarea
+                value={message}
+                onChange={handleChange}
+                placeholder="Your message"
+                required
+              ></textarea>
+              <button type="submit">Send</button>
+            </form>
           </div>
-        ))}
-         </div>
-      <form className="contact-form" onSubmit={handleFormSubmit}>
-        <h3>Leave us a message</h3>
-        <textarea
-          placeholder="Your message"
-          value={message}
-          onChange={handleInputChange}
-        ></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  );
-};
-
-export default ContactUs;
+        );
+      };
+      
+      export default ContactUs;
