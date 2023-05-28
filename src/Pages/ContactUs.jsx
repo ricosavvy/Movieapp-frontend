@@ -45,8 +45,9 @@ const developers = [
         image: `${img14}`,
       },
     ]
+    const ContactUs = () => {
     
-    return (
+       return (
       <div className="contact-us">
         {developers.map((developer, index) => (
           <div className="contact-card" key={index}>
@@ -60,8 +61,8 @@ const developers = [
           </div>
         ))}
       </div>
-    );
-  
+      );
+   };
   
   export default ContactUs;
   
