@@ -45,46 +45,81 @@ const developers = [
         image: `${img14}`,
       },
     ]
-      const ContactUs = () => {
-        const [message, setMessage] = useState('');
-      
-        const handleSubmit = (e) => {
-          e.preventDefault();
-          // Process the message here (e.g., send an email)
-          console.log(`Message: ${message}`);
-          setMessage('');
-        };
-      
-        const handleChange = (e) => {
-          setMessage(e.target.value);
-        };
-      
-        return (
-          <div className="contact-us">
-            <h2>Contact Us</h2>
-            <div className="developers">
-              {developers.map((developer, index) => (
-                <div className="developer" key={index}>
-                  <img src={developer.image} alt={developer.name} />
-                  <div className="info">
-                    <h3>{developer.name}</h3>
-                    <p>{developer.email}</p>
-                  </div>
-                </div>
-              ))}
+    
+    const [contactFormData, setContactFormData] = useState({
+      name: '',
+      email: '',
+      message: '',
+    });
+  
+    const handleFormSubmit = (event) => {
+      event.preventDefault();
+  
+      // Process the form data or send it to a server
+      console.log(contactFormData);
+  
+      // Reset the form
+      setContactFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+    };
+  
+    const handleInputChange = (event) => {
+      const { name, value } = event.target;
+      setContactFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    };
+  
+    return (
+      <div className="contact-us">
+        <div className="contact-form">
+          <h2>Contact Us</h2>
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={contactFormData.name}
+              onChange={handleInputChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={contactFormData.email}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={contactFormData.message}
+              onChange={handleInputChange}
+              required
+            />
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+  
+        <div className="developers">
+          {developers.map((developer, index) => (
+            <div className="contact-card" key={index}>
+              <img className="developer-image" src={developer.image} alt={developer.name} />
+              <div className="developer-info">
+                <h3>{developer.name}</h3>
+                <p>Email: {developer.email}</p>
+              </div>
             </div>
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <h3>Leave us a message</h3>
-              <textarea
-                value={message}
-                onChange={handleChange}
-                placeholder="Your message"
-                required
-              ></textarea>
-              <button type="submit">Send</button>
-            </form>
-          </div>
-        );
-      };
-      
-      export default ContactUs;
+          ))}
+        </div>
+      </div>
+    );
+          
+  
+  export default ContactUs;
+  
