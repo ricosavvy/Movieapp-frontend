@@ -61,6 +61,7 @@ const developers = [
             </div>
           </div>
         ))}
+        <Contactus />
       </div>
       );
    };
