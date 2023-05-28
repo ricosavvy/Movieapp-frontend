@@ -10,21 +10,28 @@
   text-align: center;
 }
 
-.developer-image {
+.image-container {
+  position: relative;
   width: 150px;
   height: 150px;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 50%;
 }
 
-.developer-info {
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
   margin-top: 10px;
 }
 
-.developer-info h3 {
+.info h3 {
   margin: 0;
 }
 
-.developer-info p {
+.info p {
   margin: 5px 0;
 }

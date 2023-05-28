@@ -46,21 +46,23 @@ const developers = [
       },
     ]
     
-    
-      return (
+    return (
       <div className="contact-us">
-      {developers.map((developer, index) => (
-        <div className="contact-card" key={index}>
-          <img className="developer-image" src={developer.image} alt={developer.name} />
-          <div className="developer-info">
-            <h3>{developer.name}</h3>
-            <p>Email: {developer.email}</p>
+        {developers.map((developer, index) => (
+          <div className="contact-card" key={index}>
+            <div className="image-container">
+              <img src={developer.image} alt={developer.name} />
+            </div>
+            <div className="info">
+              <h3>{developer.name}</h3>
+              <p>Email: {developer.email}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  );
- 
-
-export default ContactUs;
+        ))}
+      </div>
+    );
   
+  
+  export default ContactUs;
+  
+      
