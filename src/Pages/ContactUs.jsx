@@ -46,29 +46,21 @@ const developers = [
       },
     ]
     
-    const [contactFormData, setContactFormData] = useState({
-      name: '',
-      email: '',
-      message: '',
-    });
-  
-const ContactUs = () => {
+    
   return (
     <div className="contact-us">
-      <h2>Contact Us</h2>
-      <div className="developers">
-        {developers.map((developer, index) => (
-          <div className="developer" key={index}>
-            <img src={developer.image} alt={developer.name} />
-            <div className="info">
-              <h3>{developer.name}</h3>
-              <p>{developer.email}</p>
-            </div>
+      {developers.map((developer, index) => (
+        <div className="contact-card" key={index}>
+          <img className="developer-image" src={developer.image} alt={developer.name} />
+          <div className="developer-info">
+            <h3>{developer.name}</h3>
+            <p>Email: {developer.email}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
-};
+ 
 
 export default ContactUs;
+  
