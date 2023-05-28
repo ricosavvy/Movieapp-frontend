@@ -1,14 +1,15 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Typography } from '@mui/material';
 
 function SignUp() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       username: '',
       password: '',
       email: '',
@@ -18,18 +19,18 @@ function SignUp() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://localhost:3000',
+          // 'Access-Control_Allow_Origin': 'https://localhost:3000',
         },
         body: JSON.stringify(values),
       })
         .then(response => {
           console.log(response.json());
-          Navigate("/LogIn"); // Changed from Navigate to navigate (lowercase)
+          navigate("/LogIn")
         })
         .catch(error => {
           console.log(error);
         });
-        
+        // console.log(values)
     },
   });
 
@@ -49,25 +50,25 @@ function SignUp() {
           />
         </div>
         <div>
-          <label htmlFor="firstname">First Name:</label>
+          <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
-            id="firstname"
-            name="firstname"
+            id="firstName"
+            name="firstName"
             required
             onChange={formik.handleChange}
-            value={formik.values.firstname}
+            value={formik.values.firstName}
           />
         </div>
         <div>
-          <label htmlFor="lastname">Last Name:</label>
+          <label htmlFor="lastName">Last Name:</label>
           <input
             type="text"
-            id="lastname"
-            name="lastname"
+            id="lastName"
+            name="lastName"
             required
             onChange={formik.handleChange}
-            value={formik.values.lastname}
+            value={formik.values.lastName}
           />
         </div>
         <div>

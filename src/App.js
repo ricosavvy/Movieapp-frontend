@@ -7,11 +7,14 @@ import NavBar from './Components/NavBar';
 import MovieInfo from './Pages/MovieInfo';
 import ContactUs from './Pages/ContactUs';
 import MoviePage from './Pages/MoviePage';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import SearchedMovies from './Pages/SearchedMovies';
 import Signup from './Pages/Signup';
+import state from './state';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const isAuth = Boolean(useSelector((state) => state.token))
   return (
     <>
     <Box>
@@ -22,7 +25,7 @@ function App() {
           <Route exact path="/movie/:id" element={<MovieInfo />} />
           <Route exact path="/LogIn" element={<LogIn />} />
           <Route exact path="/Search/:data" element={<SearchedMovies />} />
-          <Route exact path="/User" element={<User />} />
+          <Route exact path="/User" element={isAuth ? <User /> : <Navigate to='/LogIn' />} />
           <Route exact path="/ContactUs" element={<ContactUs />} />
           <Route exact path="/SignUp" element={<Signup />} />
         </Routes>

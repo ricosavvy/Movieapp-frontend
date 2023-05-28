@@ -10,55 +10,54 @@ import SendIcon from '@mui/icons-material/Send';
 import StarIcon from '@mui/icons-material/Star';
 import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-
-const url = window.location.href;
+import { Navigate, useParams } from 'react-router-dom';
 
 
 const Forms = () => {
   const { id } = useParams();
-  // console.log(id)
-  const token = ''
+  const user = useSelector((state) => state.user)
+  const token = useSelector((state) => state.token)
+
   const formik = useFormik({
     initialValues: {
       review: '',
     },
-    onSubmit: values => {
-      // rating
-      // fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Authorization': `Bearer ${token}`,
-      //     'Content-Type': 'application/json',
-      //     'Access-Control_Allow_Origin': 'https://localhost:3000'
-      //   },
-      //   body: JSON.stringify({user: '', movieId: '', rating: 4.5})
-      // })
-      // .then(response => {
-      //   console.log(response.json())
-      // })
-      // .catch(error => {
-      //   console.log(error)
-      // })
+    onSubmit: (values, { setSubmitting }) => {
+      //rating
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({user: user._id, movieId: id, rating: value})
+      })
+      .then(response => {
+        console.log(response.json())
+      })
+      .catch(error => {
+        console.log(error)
+      })
 
-      // // rewiews
-      // fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
-      //   method: 'POST',
-      //   headers: {
-      //     // 'Authorization': `Bearer ${token}`,
-      //     'Content-Type': 'application/json',
-      //     'Access-Control_Allow_Origin': 'https://localhost:3000'
-      //   },
-      //   body: JSON.stringify({userId: '', movieId: '', review: ''})
-      // })
-      // .then(response => {
-      //   console.log(response.json())
-      // })
-      // .catch(error => {
-      //   console.log(error)
-      // })
-
-      console.log(id, values.review, value)
+      //rewiews
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({user: user._id, movieId: id, review: values.review})
+      })
+      .then(response => {
+        console.log(response.json())
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      setSubmitting(false);
+      // console.log(id, values.review, value)
     },
   });
   
@@ -105,7 +104,7 @@ const MovieInfo = () => {
     }))
     // console.log(Movie)
   }
-  // Returns info about the movie
+  //Returns info about the movie
   fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
     method: 'GET',
     headers: {
