@@ -47,6 +47,7 @@ function Login() {
   });
 
   return (
+    <div className="form_overlay">
     <div id="loginn">
       <h2 id="Header">Log In</h2>
       <form onSubmit={formik.handleSubmit}>
@@ -75,6 +76,7 @@ function Login() {
         <button id="buttton" type="submit">Log In</button>
       </form>
       <Typography color={'white'}>Don't have an account? </Typography><Link to='/SignUp' id='togbtn'>Sign up</Link>
+    </div>
     </div>
   );
 }

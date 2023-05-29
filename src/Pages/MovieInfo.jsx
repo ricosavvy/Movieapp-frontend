@@ -24,22 +24,6 @@ const Forms = () => {
     },
     onSubmit: (values, { setSubmitting }) => {
       //rating
-      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Access-Control_Allow_Origin': 'https://localhost:3000'
-        },
-        body: JSON.stringify({movie: id})
-      })
-      .then(response => {
-        console.log(response.json())
-      })
-      .catch(error => {
-        console.log(error)
-      })
-      //rating
       fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
         method: 'POST',
         headers: {
@@ -139,7 +123,8 @@ const MovieInfo = () => {
     // console.log(Movie)
   }
   //Returns info about the movie
-  fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
+  useEffect(() => {
+    fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
     method: 'GET',
     headers: {
        Authorization: `Bearer ${token}`,
@@ -147,14 +132,14 @@ const MovieInfo = () => {
       'Access-Control-Allow-Origin': 'https://localhost:3000'
     },
   })
-  .then(response => {
-    console.log(response.json())
-  })
+  .then(response => response.json())
   .then(data => setFeedback(data))
   .catch(error => {
     console.log(error)
   })
-
+  }, [])
+  
+  const reviewArray = Feedback.reviews;
   return (
     <>
       <div className="movie__details">
@@ -217,16 +202,18 @@ const MovieInfo = () => {
             <Forms />
           </div>
 
-            {
-              Feedback &&
-                Feedback.map(fdbk => (
-                  <div className="reviews">
-                    <div className='Review'>
-                      <Typography variant='subtitle2'>{fdbk.review}</Typography>
-                    </div>
-                  </div>
+          {console.log(reviewArray)}
+          {console.log(Feedback.reviews)}
+            {/* {
+              reviewArray.map((fdbk) => (
+                // <div className="reviews">
+                //     <div className='Review'>
+                //       <Typography variant='subtitle2'>{fdbk}</Typography>
+                //     </div>
+                //   </div>
+                      console.log(fdbk)
                 ))
-            }
+              } */}
           </div>
         <Footer/>
     </>
