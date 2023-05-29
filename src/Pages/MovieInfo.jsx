@@ -24,6 +24,22 @@ const Forms = () => {
     },
     onSubmit: (values, { setSubmitting }) => {
       //rating
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({movie: id})
+      })
+      .then(response => {
+        console.log(response.json())
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      //rating
       fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
         method: 'POST',
         headers: {
@@ -83,6 +99,7 @@ const MovieInfo = () => {
   const[movieInfo, setMovie] = useState();
   const[Feedback, setFeedback] = useState([]);
   const token = useSelector((state) => state.token)
+  const user = useSelector((state) => state.user)
 
   console.log(token)
   useEffect(() => {
@@ -97,24 +114,24 @@ const MovieInfo = () => {
   ]
 
   const movielistsubmitting = () =>{
-    fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/watchlist`, {
+    fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/watchlist/add`, {
     method: 'POST',
     headers: {
        Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'https://localhost:3000'
     },
-    body: JSON.stringify({})
+    body: JSON.stringify({userId: user._id, movieId: id, movieName: movieInfo.original_title})
   })
   .then(response => {
     console.log(response.json())
   })
-  .then(data => {
-    const movies = data
-    dispatch(setMovies({
-      movies
-    }))
-  })
+  .then(data => console.log(data)
+    // const movies = data
+    // dispatch(setMovies({
+    //   movies
+    // }))
+  )
   .catch(error => {
     console.log(error)
   })
@@ -163,7 +180,7 @@ const MovieInfo = () => {
 
               <div className="ratings">
                 <div className="rate">{movieInfo ? "Global rating: " + movieInfo.vote_average: " "}<StarIcon/>{" "}</div> 
-                <div className="rate">{Feedback ? "Local rating: " + Feedback.rating: " "}<StarIcon/>{" "}</div>
+                <div className="rate">{Feedback ? "Local rating: " + Feedback.rating: "Local Rating: 0" }<StarIcon/>{" "}</div>
               </div>
             </div>
         </div>
