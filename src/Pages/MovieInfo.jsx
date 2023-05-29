@@ -48,7 +48,7 @@ const Forms = () => {
           'Content-Type': 'application/json',
           'Access-Control_Allow_Origin': 'https://localhost:3000'
         },
-        body: JSON.stringify({user: user._id, movieId: id, review: values.review})
+        body: JSON.stringify({user: user._id, movieId: id, content: values.review})
       })
       .then(response => {
         console.log(response.json())
@@ -97,11 +97,28 @@ const MovieInfo = () => {
   ]
 
   const movielistsubmitting = () =>{
-    const name = movieInfo.original_title;
-    const movies = { id, name}
+    fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/watchlist`, {
+    method: 'POST',
+    headers: {
+       Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://localhost:3000'
+    },
+    body: JSON.stringify({})
+  })
+  .then(response => {
+    console.log(response.json())
+  })
+  .then(data => {
+    const movies = data
     dispatch(setMovies({
       movies
     }))
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
     // console.log(Movie)
   }
   //Returns info about the movie
@@ -146,7 +163,7 @@ const MovieInfo = () => {
 
               <div className="ratings">
                 <div className="rate">{movieInfo ? "Global rating: " + movieInfo.vote_average: " "}<StarIcon/>{" "}</div> 
-                <div className="rate">{movieInfo ? "Local rating: " + movieInfo.vote_average: " "}<StarIcon/>{" "}</div>
+                <div className="rate">{Feedback ? "Local rating: " + Feedback.rating: " "}<StarIcon/>{" "}</div>
               </div>
             </div>
         </div>
@@ -188,7 +205,6 @@ const MovieInfo = () => {
                 Feedback.map(fdbk => (
                   <div className="reviews">
                     <div className='Review'>
-                      <Typography variant='subtitle2'>{fdbk.rating}</Typography> <br />
                       <Typography variant='subtitle2'>{fdbk.review}</Typography>
                     </div>
                   </div>

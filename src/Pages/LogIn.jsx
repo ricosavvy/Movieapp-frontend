@@ -29,7 +29,7 @@ function Login() {
           dispatch(setToken({
             token: token,
           }));
-          console.log(token)
+          // console.log(token)
           return response.json()
         })
         .then(result => {
@@ -37,7 +37,7 @@ function Login() {
           dispatch(setUser({
             user: user,
           }));
-          console.log(user)
+          // console.log(user)
           navigate("/Movies");
         })
         .catch(error => {

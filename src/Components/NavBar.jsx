@@ -50,8 +50,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {
   const [value, setValue] = React.useState('');
-  const user = useSelector((state) => state.user)
-  const isAuth = Boolean(useSelector((state) => state.token))
+  // const user = useSelector((state) => state.user)
+  // const isAuth = Boolean(useSelector((state) => state.token))
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -104,7 +104,7 @@ export default function PrimarySearchAppBar() {
     open={isMenuOpen}
     onClose={handleMenuClose}
     >
-      <MenuItem >{isAuth ? user.username + ' ' : 'Guest'}</MenuItem>
+      {/* <MenuItem >{isAuth ? user.username + ' ' : 'Guest'}</MenuItem> */}
       <MenuItem component={Link} to='/Movies'>Home</MenuItem>
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
       <Divider/>
