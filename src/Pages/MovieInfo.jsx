@@ -55,8 +55,7 @@ const Forms = () => {
       .catch(error => {
         console.log(error)
       })
-
-      //rewiews
+      
       fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
         method: 'POST',
         headers: {
@@ -101,7 +100,6 @@ const MovieInfo = () => {
   const token = useSelector((state) => state.token)
   const user = useSelector((state) => state.user)
 
-  console.log(token)
   useEffect(() => {
     getMovieInfo()
     window.scrollTo(0,0)
@@ -139,21 +137,23 @@ const MovieInfo = () => {
     // console.log(Movie)
   }
   //Returns info about the movie
-  fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
-    method: 'GET',
-    headers: {
-       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://localhost:3000'
-    },
-  })
-  .then(response => {
-    console.log(response.json())
-  })
-  .then(data => setFeedback(data))
-  .catch(error => {
-    console.log(error)
-  })
+  useEffect(() => {
+    fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
+      method: 'GET',
+      headers: {
+         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://localhost:3000'
+      },
+    })
+    .then(response => response.json())
+    .then(data => {setFeedback(data)
+      console.log(data)
+    })
+    .catch(error => {
+      console.log(error)
+    })      
+  }, [])
 
   return (
     <>
@@ -217,7 +217,7 @@ const MovieInfo = () => {
             <Forms />
           </div>
 
-            {
+            {/* {
               Feedback &&
                 Feedback.map(fdbk => (
                   <div className="reviews">
@@ -226,7 +226,10 @@ const MovieInfo = () => {
                     </div>
                   </div>
                 ))
-            }
+            } */}
+            {/* {
+              console.log(Feedback.rating)
+            } */}
           </div>
         <Footer/>
     </>
