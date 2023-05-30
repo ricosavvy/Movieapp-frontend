@@ -1,69 +1,60 @@
-.contact-us {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
 }
 
-.contact-card {
-  width: 200px;
-  margin: 20px;
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.developers {
+  width: 60%;
+}
+
+.developer {
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.image-container {
-  position: relative;
+.developer img {
   width: 150px;
   height: 150px;
-  overflow: hidden;
+  object-fit: cover;
   border-radius: 50%;
 }
 
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.info {
-  margin-top: 10px;
-}
-
-.info h3 {
-  margin: 0;
-}
-
-.info p {
-  margin: 5px 0;
-}
-.contact-container {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.contact-heading {
-  text-align: center;
-}
-
 .contact-form {
-  display: flex;
-  flex-direction: column;
+  width: 35%;
 }
 
-.contact-label {
-  margin-top: 10px;
+.contact-form h2 {
+  margin-bottom: 20px;
 }
 
-.contact-input {
+.contact-form input,
+.contact-form textarea {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-.contact-textarea {
-  height: 120px;
+.contact-form button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.contact-button {
-  margin-top: 10px;
-  align-self: flex-start;
+.contact-form button:hover {
+  background-color: #2e8833;
 }
