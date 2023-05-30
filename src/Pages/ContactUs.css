@@ -1,56 +1,111 @@
 .contact-us {
-  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.developers {
+.header {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.subheader {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #0e0d0d;
+}
+
+.developers-section {
+  margin-bottom: 40px;
+}
+
+.developer-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
+  gap: 20px;
 }
 
-.developer {
-  position: relative;
-  width: 200px;
-  height: 300px;
-  margin: 10px;
-}
-
-.developer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.developer .reflection {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+.developer-card {
+  text-align: center;
   padding: 10px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  transform: translateY(100%);
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
-.developer:hover .reflection {
-  transform: translateY(0);
+.developer-card:hover {
+  transform: translateY(-5px);
 }
 
-.developer h2 {
+.developer-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.developer-name {
   font-size: 18px;
   margin-bottom: 5px;
+  color: #333;
 }
 
-.developer p {
+.developer-email {
   font-size: 14px;
-  color: gray;
+  color: #555;
 }
-#dev_img {
-  width: 500px;
-  height: 600px;
+
+.contact-form-section {
+  text-align: center;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-5px);
+}
+
+input[type='text'],
+input[type='email'],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+button[type='submit'] {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background-color: #555;
 }
