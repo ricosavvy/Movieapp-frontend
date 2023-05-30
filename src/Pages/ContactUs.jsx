@@ -137,6 +137,6 @@ class ContactUs extends React.Component {
     );
   }
 }
-  export default ContactUsPage;
+  export default ContactUs;
   
       
