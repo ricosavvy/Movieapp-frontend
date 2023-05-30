@@ -6,7 +6,7 @@ import img10 from '../assets/img/img10.jpeg'
 import img11 from '../assets/img/img11.jpeg'
 import img12 from '../assets/img/img12.jpeg'
 import img9 from '../assets/img/img9.jpeg'
-
+import { useState } from 'react'
 
 const developers = [
       {
@@ -47,98 +47,89 @@ const developers = [
       },
     ]
     
-class ContactUs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      email: '',
-      message: '',
-    };
-  }
-
-  handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    // Perform form submission logic here
-    console.log('Form submitted:', this.state);
-    // Reset form fields
-    this.setState({
-      name: '',
-      email: '',
-      message: '',
-    });
-  };
-
-  render() {
-    return (
-      <div className="container">
-        <div className="header">
-          <h1>Contact Us</h1>
-        </div>
-        <div className="content">
-          <div className="developers">
-            {developers.map((developer, index) => (
-              <div className="developer" key={index}>
-                <img src={developer.image} alt={`Developer ${index + 1}`} />
-                <div className="developer-details">
-                  <h2>{developer.name}</h2>
-                  <p>Email: {developer.email}</p>
+    const ContactUs = () => {
+      const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    
+      const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [name]: value,
+        }));
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission here
+        console.log(formData);
+      };
+    
+      return (
+        <div className="contact-us">
+          <h1 className="header">Contact Us</h1>
+    
+          <div className="developers-section">
+            <h2 className="subheader">Meet Our Developers</h2>
+            <div className="developer-list">
+              {developers.map((developer) => (
+                <div key={developer.id} className="developer-card">
+                  <img
+                    src={developer.image}
+                    alt={developer.name}
+                    className="developer-image"
+                  />
+                  <h3 className="developer-name">{developer.name}</h3>
+                  <p className="developer-email">{developer.email}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          <div className="contact-form">
-            <h2>Get in Touch With Us</h2>
-            <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  id='contact_us_input'
-                  name="name"
-                  placeholder="Your Name"
-                  value={this.state.name}
-                  onChange={this.handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  id='contact_us_input'
-                  name="email"
-                  placeholder="Your Email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={this.state.message}
-                  onChange={this.handleInputChange}
-                  required
-                ></textarea>
-              </div>
-              <button id='send_message' type="submit">Send Message</button>
+    
+          <div className="contact-form-section">
+            <h2 className="subheader">Get in Touch With Us</h2>
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                value={formData.subject}
+                onChange={handleInputChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
+              <button type="submit">Send Message</button>
             </form>
           </div>
         </div>
-      </div>
-    );
-  }
-}
+      );
+    };
   export default ContactUs;
   
       
