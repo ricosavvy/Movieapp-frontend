@@ -7,7 +7,7 @@ import { Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import SendIcon from '@mui/icons-material/Send';
 import StarIcon from '@mui/icons-material/Star';
-import { useEffect, useState} from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
@@ -96,23 +96,23 @@ const Forms = () => {
 const MovieInfo = () => {
 
   const{ id } = useParams();
-  const[movieInfo, setMovie] = useState();
+  const[movieInfo, setMovie] = useState([]);
   const[Recommended, setRecommendion] = useState([]);
   const[Feedback, setFeedback] = useState([]);
   const token = useSelector((state) => state.token)
   const user = useSelector((state) => state.user)
   const FeedbackArray = Feedback.reviews;
 
-  useEffect(() => {
-    getMovieInfo()
-    window.scrollTo(0,0)
-  }, [])
+  // useEffect(() => {
+  //   getMovieInfo()
+  //   window.scrollTo(0,0)
+  // }, [])
 
-  const getMovieInfo = () => {
+  // const getMovieInfo = () => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(data => setMovie(data))
-  }
+  // }
 
   const movielistsubmitting = () =>{
     fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/watchlist/add`, {

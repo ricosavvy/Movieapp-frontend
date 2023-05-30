@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react'
+import {React, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import { Link } from "react-router-dom";
@@ -11,16 +11,16 @@ const SearchedMovies = () => {
     const { data } = useParams();
     const [ SearchedMovies, setSearchedMovies ] = useState([])
 
-    useEffect(() => {
-        getSearchMovieInfo()
-        window.scrollTo(0,0)
-      }, [])
+    // useEffect(() => {
+    //     getSearchMovieInfo()
+    //     window.scrollTo(0,0)
+    //   }, [])
     
-      const getSearchMovieInfo = () => {
+    //   const getSearchMovieInfo = () => {
           fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${data}`)
           .then(response => response.json())
           .then(data => setSearchedMovies(data.results))
-      }
+    //   }
 
     return (
         <div>
