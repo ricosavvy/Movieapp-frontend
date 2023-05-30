@@ -262,7 +262,7 @@ const MovieInfo = () => {
             }
               
               <div className='movie__list'>
-                <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div>
+                {/* <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div> */}
     {
             Recommended.map(movie => (
                 <div className='movie__Item'>
