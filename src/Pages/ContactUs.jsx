@@ -6,7 +6,7 @@ import img10 from '../assets/img/img10.jpeg'
 import img11 from '../assets/img/img11.jpeg'
 import img12 from '../assets/img/img12.jpeg'
 import img9 from '../assets/img/img9.jpeg'
-import  { useState } from "react";
+
 
 const developers = [
       {
@@ -46,75 +46,88 @@ const developers = [
         image: `${img14}`,
       },
     ]
-    const ContactUs = () => {
+    class ContactUs extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          name: '',
+          email: '',
+          message: '',
+        };
+      }
     
-       return (
-      <div className="contact-us">
-        {developers.map((developer, index) => (
-          <div className="contact-card" key={index}>
-            <div className="image-container">
-              <img src={developer.image} alt={developer.name} />
+      handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value,
+        });
+      };
+    
+      handleSubmit = (event) => {
+        event.preventDefault();
+        // Perform form submission logic here
+        console.log('Form submitted:', this.state);
+        // Reset form fields
+        this.setState({
+          name: '',
+          email: '',
+          message: '',
+        });
+      };
+    
+      render() {
+        return (
+          <div className="container">
+            <div className="header">
+              <h1>Contact Us</h1>
             </div>
-            <div className="info">
-              <h3>{developer.name}</h3>
-              <p>Email: {developer.email}</p>
+            <div className="content">
+              <div className="developers">
+                {developers.map((developer, index) => (
+                  <div className="developer" key={index}>
+                    <img src={developer.image} alt={`Developer ${index + 1}`} />
+                    <h2>{developer.name}</h2>
+                    <p>Email: {developer.email}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="contact-form">
+                <h2>Get in Touch With Us</h2>
+                <form onSubmit={this.handleSubmit}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    value={this.state.name}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    value={this.state.message}
+                    onChange={this.handleInputChange}
+                    required
+                  ></textarea>
+                  <button type="submit">Send Message</button>
+                </form>
+              </div>
             </div>
           </div>
-        ))}
-        <Contactus />
-      </div>
-      );
-   };
-   function Contactus() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log("Name: ", name);
-      console.log("Email: ", email);
-      console.log("Message: ", message);
-      // Add code to send the message to your server or email service
-    };
-  
-    return (
-      <div className="contact-container">
-        <h1 className="contact-heading">Contact Us</h1>
-        <form onSubmit={handleSubmit} className="contact-form">
-          <label className="contact-label">
-            Name:
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="contact-input"
-            />
-          </label>
-          <label className="contact-label">
-            Email:
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="contact-input"
-            />
-          </label>
-          <label className="contact-label">
-            Message:
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="contact-input contact-textarea"
-            />
-          </label>
-          <button type="submit" className="contact-button">
-            Submit
-          </button>
-        </form>
-      </div>
-    );
-  }
+        );
+      }
+    }
   export default ContactUs;
   
       
