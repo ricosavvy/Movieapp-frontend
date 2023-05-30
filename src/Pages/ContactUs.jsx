@@ -46,88 +46,97 @@ const developers = [
         image: `${img14}`,
       },
     ]
-    class ContactUs extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          name: '',
-          email: '',
-          message: '',
-        };
-      }
     
-      handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value,
-        });
-      };
-    
-      handleSubmit = (event) => {
-        event.preventDefault();
-        // Perform form submission logic here
-        console.log('Form submitted:', this.state);
-        // Reset form fields
-        this.setState({
-          name: '',
-          email: '',
-          message: '',
-        });
-      };
-    
-      render() {
-        return (
-          <div className="container">
-            <div className="header">
-              <h1>Contact Us</h1>
-            </div>
-            <div className="content">
-              <div className="developers">
-                {developers.map((developer, index) => (
-                  <div className="developer" key={index}>
-                    <img src={developer.image} alt={`Developer ${index + 1}`} />
-                    <h2>{developer.name}</h2>
-                    <p>Email: {developer.email}</p>
-                  </div>
-                ))}
+class ContactUsPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      message: '',
+    };
+  }
+
+  handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    // Perform form submission logic here
+    console.log('Form submitted:', this.state);
+    // Reset form fields
+    this.setState({
+      name: '',
+      email: '',
+      message: '',
+    });
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>Contact Us</h1>
+        </div>
+        <div className="content">
+          <div className="developers">
+            {developers.map((developer, index) => (
+              <div className="developer" key={index}>
+                <img src={developer.image} alt={`Developer ${index + 1}`} />
+                <div className="developer-details">
+                  <h2>{developer.name}</h2>
+                  <p>Email: {developer.email}</p>
+                </div>
               </div>
-              <div className="contact-form">
-                <h2>Get in Touch With Us</h2>
-                <form onSubmit={this.handleSubmit}>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    value={this.state.name}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    value={this.state.email}
-                    onChange={this.handleInputChange}
-                    required
-                  />
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    value={this.state.message}
-                    onChange={this.handleInputChange}
-                    required
-                  ></textarea>
-                  <button type="submit">Send Message</button>
-                </form>
-              </div>
-            </div>
+            ))}
           </div>
-        );
-      }
-    }
+          <div className="contact-form">
+            <h2>Get in Touch With Us</h2>
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={this.state.name}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  value={this.state.message}
+                  onChange={this.handleInputChange}
+                  required
+                ></textarea>
+              </div>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
   export default ContactUs;
   
       
