@@ -108,11 +108,11 @@ const MovieInfo = () => {
     window.scrollTo(0,0)
   }, [])
 
-  const getMovieInfo = () => [
+  const getMovieInfo = () => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(data => setMovie(data))
-  ]
+  }
 
   const movielistsubmitting = () =>{
     fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/watchlist/add`, {
