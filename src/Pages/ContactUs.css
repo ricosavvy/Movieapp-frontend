@@ -71,8 +71,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-input,
-textarea {
+.contact_us_input {
   width: 100%;
   padding: 10px;
   border: none;
@@ -84,7 +83,7 @@ textarea {
   height: 100px;
 }
 
-button {
+.send_message {
   display: block;
   width: 100%;
   padding: 10px 20px;

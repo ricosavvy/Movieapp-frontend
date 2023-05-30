@@ -103,6 +103,7 @@ class ContactUs extends React.Component {
               <div className="form-group">
                 <input
                   type="text"
+                  id='contact_us_input'
                   name="name"
                   placeholder="Your Name"
                   value={this.state.name}
@@ -113,6 +114,7 @@ class ContactUs extends React.Component {
               <div className="form-group">
                 <input
                   type="email"
+                  id='contact_us_input'
                   name="email"
                   placeholder="Your Email"
                   value={this.state.email}
@@ -129,7 +131,7 @@ class ContactUs extends React.Component {
                   required
                 ></textarea>
               </div>
-              <button type="submit">Send Message</button>
+              <button id='send_message' type="submit">Send Message</button>
             </form>
           </div>
         </div>
