@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Typography } from '@mui/material'
 import { setWatchLater } from '../state'
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-window.scrollTo(0,0)
+// window.scrollTo(0,0)
 const User = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user)
@@ -23,9 +24,11 @@ const User = () => {
   .then(response => response.json())
   .then(data => {setWatchlist(data)
     dispatch(setWatchLater({
-      watchlater: watchlists,
-  }))
-  })
+      watchlater: watchlists,})
+      )
+  const element = document.getElementById('wll');
+  element.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
+})
   .catch(error => {
     console.log(error)
   })
@@ -41,9 +44,10 @@ const User = () => {
     <>
     <div className='overlay'>
       <h2 id='Welcome_text'>Welcome <span style={{color: 'yellow'}}>{user.username}</span></h2>
+      <br />
       <div className="like_btn">
               <button id='smtbtns' type="submit" value={true} onClick={watchLaterList}> 
-               My Watchlater
+               My Watchlater <ArrowDownwardIcon/>
               </button>
        </div>
         {/* {
@@ -59,7 +63,7 @@ const User = () => {
        {/* {console.log(watchlist)} */}
        </div>
 
-       <div className="wl">
+       <div className="wl" id='wll'>
 
         {
               (Array.isArray(watchArray) ?

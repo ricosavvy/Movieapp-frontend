@@ -36,9 +36,7 @@ const Forms = () => {
         },
         body: JSON.stringify({movie: id})
       })
-      .then(response => {
-        console.log(response.json())
-      })
+      .then(response => response.json())
       .catch(error => {
         console.log(error)
       })
@@ -52,9 +50,7 @@ const Forms = () => {
         },
         body: JSON.stringify({user: user._id, movieId: id, rating: value})
       })
-      .then(response => {
-        console.log(response.json())
-      })
+      .then(response => response.json())
       .catch(error => {
         console.log(error)
       })
@@ -68,12 +64,11 @@ const Forms = () => {
         },
         body: JSON.stringify({username: user.username,user: user._id, movieId: id, content: values.review})
       })
-      .then(response => {
-        console.log(response.json())
-      })
+      .then(response => response.json())
       .catch(error => {
         console.log(error)
       })
+      alert('Rating added')
       setSubmitting(false);
     },
   });
@@ -125,14 +120,9 @@ const MovieInfo = () => {
     body: JSON.stringify({userId: user._id, movieId: id, movieName: movieInfo.original_title})
   })
   .then(response => {
-    console.log(response.json())
+    response.json()
+    alert('Added to watch later')
   })
-  .then(data => console.log(data)
-    // const movies = data
-    // dispatch(setMovies({
-    //   movies
-    // }))
-  )
   .catch(error => {
     console.log(error)
   })
@@ -175,6 +165,7 @@ const MovieInfo = () => {
     .then(response => response.json())
     .then(response => setRecommendion(response.results))
     .catch(err => console.error(err));
+
   return (
     <>
       <div className="movie__details">
@@ -200,7 +191,10 @@ const MovieInfo = () => {
 
               <div className="ratings">
                 <div className="rate">{movieInfo ? "Global rating: " + movieInfo.vote_average: " "}<StarIcon/>{" "}</div> 
-                <div className="rate">{Feedback ? "Local rating: " + Feedback.rating: "Local Rating: 0" }<StarIcon/>{" "}</div>
+                <div className="rate">{
+                Feedback ? "Local rating: " + Feedback.rating: "Local Rating: 0" 
+                }<StarIcon/>{" "}
+                </div>
               </div>
             </div>
         </div>
@@ -243,26 +237,31 @@ const MovieInfo = () => {
                 </button>
             </div>
           </div>
+
+          <div className="review_overlay">
             {
               (Array.isArray(FeedbackArray) ?
                 FeedbackArray.map(fdbk => (
                   <div className="reviews">
                     <div className='Review'>
-                      <Typography variant='subtitle2'>{fdbk.content}</Typography>
-                      <Typography variant='subtitle2'>{fdbk.username}</Typography>
+                      {/* <Typography variant='subtitle2'>{' '}</Typography> */}
+                      <Typography variant='subtitle1'>{fdbk.content}</Typography>
+                      <Typography variant='subtitle2'>{'by - ' + fdbk.username}</Typography>
                     </div>
                   </div>
                   // console.log(fdbk)
                 )) : " "
               )
                 }
-              
-            {
-              // console.log(Array.isArray(Feedback.reviews)?Feedback.reviews[0].content:"")
-            }
-              
+              </div>
+
               <div className='movie__list'>
+<<<<<<< Updated upstream
                 {/* <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div> */}
+=======
+                {/* <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div>
+                <br /> */}
+>>>>>>> Stashed changes
     {
             Recommended.map(movie => (
                 <div className='movie__Item'>

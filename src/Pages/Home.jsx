@@ -37,13 +37,15 @@ const Home = () => {
 
       </div>
       <div className="About-Us">
-          <h2>About Us</h2>
-          <Container maxWidth=''>
-          Are you tired of endlessly scrolling through streaming platforms, unsure of what movie to watch next? Look no further! Our Movie Recommendation App is here to simplify your movie-watching experience and help you discover the perfect films tailored to your taste.
-          Whether you're a fan of action-packed blockbusters, heartwarming romances, gripping thrillers, thought-provoking documentaries, or any other genre, our app has got you covered. We curate an ever-growing collection of films from all around the world, ranging from timeless classics to the latest releases, ensuring that there's always something for everyone.
-           </Container>
+          <h3>About Us</h3>
+          <div className="about_us_text">
+            <Container maxWidth=''>
+            Are you tired of endlessly scrolling through streaming platforms, unsure of what movie to watch next? Look no further! Our Movie Recommendation App is here to simplify your movie-watching experience and help you discover the perfect films tailored to your taste.
+            Whether you're a fan of action-packed blockbusters, heartwarming romances, gripping thrillers, thought-provoking documentaries, or any other genre, our app has got you covered. We curate an ever-growing collection of films from all around the world, ranging from timeless classics to the latest releases, ensuring that there's always something for everyone.
+            </Container>
+           </div>
           <Link to="/ContactUs">
-            <Button variant="outlined" style={{color: 'black'}} sx={{pt: 1, mt: 1}}>
+            <Button variant="outlined" style={{color: 'white'}} sx={{pt: 1, mt: 2, mb:2}}>
               Contact Us
             </Button>
           </Link>

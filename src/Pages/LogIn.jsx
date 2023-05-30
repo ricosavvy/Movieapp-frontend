@@ -25,6 +25,7 @@ function Login() {
         body: JSON.stringify(values),
       })
         .then(response => {
+          alert('Logged in')
           const token = response.headers.get("access-token")
           dispatch(setToken({
             token: token,
