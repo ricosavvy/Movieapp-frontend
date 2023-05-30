@@ -14,7 +14,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link, useNavigate } from 'react-router-dom';
 import Divider from '@mui/material/Divider';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLogout } from '../state';
 
 const Search = styled('div')(({ theme }) => ({

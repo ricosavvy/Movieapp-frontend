@@ -1,7 +1,6 @@
 import "./MovieInfo.css";
 import { useFormik } from 'formik';
 import Box from '@mui/material/Box';
-import { setMovies } from '../state';
 import Footer from '../Components/Footer';
 import Rating from '@mui/material/Rating';
 import { Typography } from '@mui/material';
@@ -9,8 +8,8 @@ import AddIcon from '@mui/icons-material/Add';
 import SendIcon from '@mui/icons-material/Send';
 import StarIcon from '@mui/icons-material/Star';
 import { useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -76,7 +75,6 @@ const Forms = () => {
         console.log(error)
       })
       setSubmitting(false);
-      // console.log(id, values.review, value)
     },
   });
   
