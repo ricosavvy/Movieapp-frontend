@@ -256,12 +256,7 @@ const MovieInfo = () => {
               </div>
 
               <div className='movie__list'>
-<<<<<<< Updated upstream
                 {/* <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div> */}
-=======
-                {/* <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div>
-                <br /> */}
->>>>>>> Stashed changes
     {
             Recommended.map(movie => (
                 <div className='movie__Item'>

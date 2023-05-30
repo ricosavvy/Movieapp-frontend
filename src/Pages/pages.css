@@ -78,7 +78,7 @@
 .About-Us{
     height: 50vh;
     font-family: 'Times New Roman', Times, serif;
-    background: #000000;
+    background: #000000e1;
     color: aliceblue;
     display: flex;
     flex-direction: column;
