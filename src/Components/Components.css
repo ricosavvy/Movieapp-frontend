@@ -26,55 +26,24 @@
     background-color: black; 
     color: white;
 }
-.form{
-    width: 100%;
-    color: azure;
-    display: flex;
-    flex-direction: row !important;
-    /* align-items: center; */
-    margin: 0 1rem;
-    justify-content: center;
-}
 
-#review{
-    padding: .5rem 1.5rem;
-    margin: 0 0rem;
-    color: rgb(0, 0, 0);
-    font-size: 1.2rem;
-    height: 2rem;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 900;
-    width: 70rem;
-    border-radius: 3rem;
-}
-#stars{
-    padding-right: 1rem;
-    font-size: 2.2rem;
-    color: aliceblue;
-}
-#smtbtn{
-    font-size: 1.2rem;
-    border-radius: 50%;
-    height: 3rem;
-    width: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 2s all ease;
-}
-
-#smtbtn:hover{
-    scale: 1.3rem;
-}
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) and (min-width: 652px) {
     .movie__list{
-        flex-direction: column;
-        justify-content: center;
-        row-gap: 0;
-        
+        flex-direction: row;
+
+    }
+    .movie__Item{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 652px) {
+    .movie__list{
+        flex-direction: row;
+
     }
     .movie__Item{
         width: 100%;
+        margin: 0 !important;
     }
 }

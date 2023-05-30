@@ -3,10 +3,12 @@ import { Container, Typography, Stack } from '@mui/material';
 import { Link } from "react-router-dom";
 import {Button} from '@mui/material';
 import Footer from '../Components/Footer'
+import { useSelector } from 'react-redux';
 import './pages.css'
 
 const Home = () => {
-
+  const isAuth = Boolean(useSelector((state) => state.token))
+  const user = useSelector((state) => state.user)
   return (
     <>
       <div className='Hero_Section'>
@@ -21,13 +23,13 @@ const Home = () => {
           <Link
               to="/Movies">
               <Button variant="contained" color='error'>
-              Find Quick Movie
+              {isAuth ? 'Find New Movie': 'Find Quick Movie'}
               </Button>
             </Link>
             <Link
               to="/Login">
               <Button variant="outlined" color='warning'>
-                Log In/Sign Up
+                {isAuth ? user.username + '': 'Login/Signup'}
               </Button>
             </Link>
           </Stack> 
@@ -41,7 +43,7 @@ const Home = () => {
           Whether you're a fan of action-packed blockbusters, heartwarming romances, gripping thrillers, thought-provoking documentaries, or any other genre, our app has got you covered. We curate an ever-growing collection of films from all around the world, ranging from timeless classics to the latest releases, ensuring that there's always something for everyone.
            </Container>
           <Link to="/ContactUs">
-            <Button variant="outlined" color="primary" sx={{pt: 1, mt: 1}}>
+            <Button variant="outlined" style={{color: 'black'}} sx={{pt: 1, mt: 1}}>
               Contact Us
             </Button>
           </Link>

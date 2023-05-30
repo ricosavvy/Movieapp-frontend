@@ -120,29 +120,8 @@
     background-color: black; 
     color: white;
 }
-
-@media screen and (max-width: 1000px) {
-    .posterImage>img{
-        height: 100%;
-        object-fit: cover;
-    }
-    .About-Us{
-        height: fit-content;
-        padding: 1.4rem 0;
-    }
-    .posterImage__title{
-        font-size: 2.3rem;
-    }
-    .posterImage__runtime{
-        font-size: 1.4rem;
-    }
-    .posterImage__description{
-        width: 100%;
-    }
-}
-  
-  #loginn {
-    background-color: rgb(122, 9, 9);
+#loginn {
+  background-color: rgb(122, 9, 9);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -184,7 +163,7 @@
     background-color: rgba(121, 81, 81, 0.323); /* Cloudy background for input fields */
     color: aliceblue;
   }
-  #firstname, #lastname, #username{
+  #firstName, #lastName, #username{
     width: 200px;
     padding: 5px;
     background-color: rgba(121, 81, 81, 0.326);
@@ -223,3 +202,62 @@
    margin-top: 15%;
    margin-left: 15%;
 }
+
+.overlay{
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: aliceblue;
+  justify-content: center;
+  background: linear-gradient(#000000b7, #0000009d), url(../assets/img/img6.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.wl{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#000000b7, #0000009d), url(../assets/img/img7.jpg);
+  background-size: cover;
+  background-position: center;
+  color: aliceblue;
+}
+
+.watchlater{
+  border: orange 1px solid;
+  padding: 1.5rem;
+  background-color: #0000007e;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+#Welcome_text{
+  font-size: 2rem;
+}
+  @media screen and (max-width: 1000px) {
+      .posterImage>img{
+          height: 100%;
+          object-fit: cover;
+      }
+      .About-Us{
+          height: fit-content;
+          padding: 1.4rem 0;
+      }
+      .posterImage__title{
+          font-size: 2.3rem;
+      }
+      .posterImage__runtime{
+          font-size: 1.4rem;
+      }
+      .posterImage__description{
+          width: 100%;
+      }
+  }
+    

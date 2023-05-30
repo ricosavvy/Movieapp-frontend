@@ -14,7 +14,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link, useNavigate } from 'react-router-dom';
 import Divider from '@mui/material/Divider';
-// import User from '../Pages/User';
+import { useDispatch } from 'react-redux';
+import { setLogout } from '../state';
 
 const Search = styled('div')(({ theme }) => ({
       position: 'relative',
@@ -49,6 +50,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {
   const [value, setValue] = React.useState('');
+  // const user = useSelector((state) => state.user)
+  // const isAuth = Boolean(useSelector((state) => state.token))
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -81,27 +84,32 @@ export default function PrimarySearchAppBar() {
   };
 
   const menuId = 'primary-search-account-menu';
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(setLogout())
+  }
   const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        id={menuId}
-        keepMounted
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        open={isMenuOpen}
-        onClose={handleMenuClose}
-      >
+    <Menu
+    anchorEl={anchorEl}
+    anchorOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    id={menuId}
+    keepMounted
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    open={isMenuOpen}
+    onClose={handleMenuClose}
+    >
+      {/* <MenuItem >{isAuth ? user.username + ' ' : 'Guest'}</MenuItem> */}
       <MenuItem component={Link} to='/Movies'>Home</MenuItem>
       <MenuItem component={Link} to='/User'>My Account</MenuItem>
       <Divider/>
       <MenuItem component={Link} to='/ContactUs'>Contact Us</MenuItem>
-      <MenuItem component={Link} to='/LogIn'>Logout</MenuItem>
+      <MenuItem component={Link} to='/LogIn' onClick={logout}>Logout</MenuItem>
     </Menu>
   );
 

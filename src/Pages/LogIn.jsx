@@ -1,17 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
-import { setLogin } from '../state';
-import { Navigate } from 'react-router-dom';
+import { setToken, setUser } from '../state';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Typography } from '@mui/material';
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      username: '',
       password: '',
     },
     onSubmit: async (values) => {
@@ -24,18 +25,24 @@ function Login() {
         body: JSON.stringify(values),
       })
         .then(response => {
-          console.log(response.headers.get("access-token"), response.json());
-          dispatch(setLogin({
-            user: response.user.json(),
-            token: response.headers.get("access-token"),
+          const token = response.headers.get("access-token")
+          dispatch(setToken({
+            token: token,
           }));
-          Navigate("/Movies");
+          // console.log(token)
+          return response.json()
         })
-        .then(result => console.log(result))
+        .then(result => {
+          const user = result.user;
+          dispatch(setUser({
+            user: user,
+          }));
+          // console.log(user)
+          navigate("/Movies");
+        })
         .catch(error => {
           console.log(error);
         });
-        
     },
   });
 
@@ -44,14 +51,14 @@ function Login() {
       <h2 id="Header">Log In</h2>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="username">Username: </label>
           <input
-            type="email"
-            id="email"
-            name="email"
+            type="username"
+            id="username"
+            name="username"
             required
             onChange={formik.handleChange}
-            value={formik.values.email}
+            value={formik.values.username}
           />
         </div>
         <div>
