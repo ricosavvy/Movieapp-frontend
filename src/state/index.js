@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     user: null,
     token: null,
-    watchlater: [{}]
+    isReviews: true,
+    watchlater: []
 };
 
 export const authSlice = createSlice({
@@ -15,6 +16,9 @@ export const authSlice = createSlice({
         },
         setToken: (state, action) => {
             state.token = action.payload.token;
+        },
+        setIsReviews: (state, action) => {
+            state.isReviews = action.payload.isReviews;
         },
         setLogout: (state) => {
             state.user = null;
@@ -34,5 +38,5 @@ export const authSlice = createSlice({
     }
 })
 
-export const { setUser, setToken, setLogout, setMovie, setMovies } = authSlice.actions;
+export const { setUser, setToken, setIsReviews, setLogout, setMovie, setMovies } = authSlice.actions;
 export default authSlice.reducer;

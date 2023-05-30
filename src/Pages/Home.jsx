@@ -3,10 +3,12 @@ import { Container, Typography, Stack } from '@mui/material';
 import { Link } from "react-router-dom";
 import {Button} from '@mui/material';
 import Footer from '../Components/Footer'
+import { useSelector } from 'react-redux';
 import './pages.css'
 
 const Home = () => {
-
+  const isAuth = Boolean(useSelector((state) => state.token))
+  const user = useSelector((state) => state.user)
   return (
     <>
       <div className='Hero_Section'>
@@ -27,7 +29,7 @@ const Home = () => {
             <Link
               to="/Login">
               <Button variant="outlined" color='warning'>
-                Log In/Sign Up
+                {isAuth ? user.username + '': 'Login/Signup'}
               </Button>
             </Link>
           </Stack> 

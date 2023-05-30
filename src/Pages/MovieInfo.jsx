@@ -63,7 +63,7 @@ const Forms = () => {
           'Content-Type': 'application/json',
           'Access-Control_Allow_Origin': 'https://localhost:3000'
         },
-        body: JSON.stringify({user: user._id, movieId: id, content: values.review})
+        body: JSON.stringify({username: user.username,user: user._id, movieId: id, content: values.review})
       })
       .then(response => {
         console.log(response.json())
@@ -99,6 +99,7 @@ const MovieInfo = () => {
   const[Feedback, setFeedback] = useState([]);
   const token = useSelector((state) => state.token)
   const user = useSelector((state) => state.user)
+  const FeedbackArray = Feedback.reviews;
 
   useEffect(() => {
     getMovieInfo()
@@ -137,23 +138,28 @@ const MovieInfo = () => {
     // console.log(Movie)
   }
   //Returns info about the movie
-  useEffect(() => {
-    fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
-      method: 'GET',
-      headers: {
-         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://localhost:3000'
-      },
-    })
-    .then(response => response.json())
-    .then(data => {setFeedback(data)
-      console.log(data)
-    })
-    .catch(error => {
-      console.log(error)
-    })      
-  }, [])
+  // useEffect(() => {
+    // }, [])
+    const movieReviews = () => {
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://localhost:3000'
+        },
+      })
+      .then(response => response.json())
+      .then(data => { 
+        if(Array.isArray(data.reviews))
+        {
+        setFeedback(data)}
+      }
+        )
+      .catch(error => {
+        console.log(error)
+      })      
+  }  
 
   return (
     <>
@@ -217,19 +223,30 @@ const MovieInfo = () => {
             <Forms />
           </div>
 
-            {/* {
-              Feedback &&
-                Feedback.map(fdbk => (
+          <div className="like_btn">
+              <button id='smtbtns' type="submit" value={true} onClick={movieReviews}> 
+               Reviews
+              </button>
+          </div>
+            {
+              (Array.isArray(FeedbackArray) ?
+                FeedbackArray.map(fdbk => (
                   <div className="reviews">
                     <div className='Review'>
-                      <Typography variant='subtitle2'>{fdbk.review}</Typography>
+                      <Typography variant='subtitle2'>{fdbk.content}</Typography>
+                      <Typography variant='subtitle2'>{fdbk.username}</Typography>
                     </div>
                   </div>
-                ))
-            } */}
-            {/* {
-              console.log(Feedback.rating)
-            } */}
+                  // console.log(fdbk)
+                )) : " "
+              )
+                }
+              
+            {
+              // console.log(Array.isArray(Feedback.reviews)?Feedback.reviews[0].content:"")
+            }
+              
+            
           </div>
         <Footer/>
     </>
