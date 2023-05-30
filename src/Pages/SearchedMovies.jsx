@@ -11,11 +11,11 @@ const SearchedMovies = () => {
     const { data } = useParams();
     const [ SearchedMovies, setSearchedMovies ] = useState([])
     useEffect(() => {
-        getMovieInfo()
+        getSearchMovieInfo()
         window.scrollTo(0,0)
       }, [])
     
-      const getMovieInfo = () => [
+      const getSearchMovieInfo = () => [
           fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${data}`)
           .then(response => response.json())
           .then(data => setSearchedMovies(data.results))
