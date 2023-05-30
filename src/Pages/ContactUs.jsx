@@ -47,7 +47,7 @@ const developers = [
       },
     ]
     
-class ContactUsPage extends React.Component {
+class ContactUs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
