@@ -23,7 +23,7 @@ const Home = () => {
           <Link
               to="/Movies">
               <Button variant="contained" color='error'>
-              Find Quick Movie
+              {isAuth ? 'Find New Movie': 'Find Quick Movie'}
               </Button>
             </Link>
             <Link

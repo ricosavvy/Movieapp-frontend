@@ -3,8 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     user: null,
     token: null,
-    isReviews: true,
-    watchlater: []
+    watchlater: null
 };
 
 export const authSlice = createSlice({
@@ -25,8 +24,8 @@ export const authSlice = createSlice({
             state.token = null;
             state.watchlater = null
         },
-        setMovies: (state, action) => {
-            state.watchlater = action.payload.movies;
+        setWatchLater: (state, action) => {
+            state.watchlater = action.payload.watchlaters;
         },
         setMovie: (state, action) => {
             const updatedwatch = state.watchlater.map((watchlater) => {
@@ -38,5 +37,5 @@ export const authSlice = createSlice({
     }
 })
 
-export const { setUser, setToken, setIsReviews, setLogout, setMovie, setMovies } = authSlice.actions;
+export const { setUser, setToken, setIsReviews, setLogout, setMovie, setWatchLater } = authSlice.actions;
 export default authSlice.reducer;

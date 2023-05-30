@@ -10,7 +10,11 @@ import SendIcon from '@mui/icons-material/Send';
 import StarIcon from '@mui/icons-material/Star';
 import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, Link, useParams } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
 
 
 const Forms = () => {
@@ -94,8 +98,8 @@ const Forms = () => {
 const MovieInfo = () => {
 
   const{ id } = useParams();
-  const dispatch = useDispatch();
   const[movieInfo, setMovie] = useState();
+  const[Recommended, setRecommendion] = useState([]);
   const[Feedback, setFeedback] = useState([]);
   const token = useSelector((state) => state.token)
   const user = useSelector((state) => state.user)
@@ -161,6 +165,18 @@ const MovieInfo = () => {
       })      
   }  
 
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZTU4ZDMwMDViOTAwN2I4NzQ1ODI2YjljYWJiMmM1MyIsInN1YiI6IjY0MzA0OTU4MTI4M2U5MDBmNTI4Yzc1YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xkY_WF8xvsLmgEhC3wbZBZdQ8L1cQa9fhyD2kcPO04c'
+    }
+  };
+  
+  fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1`, options)
+    .then(response => response.json())
+    .then(response => setRecommendion(response.results))
+    .catch(err => console.error(err));
   return (
     <>
       <div className="movie__details">
@@ -222,11 +238,12 @@ const MovieInfo = () => {
           <div className="theForm">
             <Forms />
           </div>
-
-          <div className="like_btn">
-              <button id='smtbtns' type="submit" value={true} onClick={movieReviews}> 
-               Reviews
-              </button>
+          <div className="reviews_btn">
+            <div className="like_btn">
+                <button id='smtbtns' type="submit" value={true} onClick={movieReviews}> 
+                Reviews
+                </button>
+            </div>
           </div>
             {
               (Array.isArray(FeedbackArray) ?
@@ -246,7 +263,36 @@ const MovieInfo = () => {
               // console.log(Array.isArray(Feedback.reviews)?Feedback.reviews[0].content:"")
             }
               
-            
+              <div className='movie__list'>
+                <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div>
+    {
+            Recommended.map(movie => (
+                <div className='movie__Item'>
+                <Link style={{textDecoration: 'none', color:'white'}} to={`/movie/${movie.id}`}>
+                <Card sx={{ maxWidth: 345 }}>
+                    <CardActionArea>
+                        <CardMedia className='cardmedia'
+                        component="img"
+                        height="200"
+                        image={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`}
+                        alt="movie id"
+                        />
+                        <CardContent className='cardcontent'>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {movie ? movie.original_title: " "}
+                        </Typography>
+                        <Typography variant="body2" gutterBottom style={{}}>
+                            {movie ? movie.overview : ""}
+                        </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                </Link>
+                </div>
+            ))
+            // console.log(Recommended)
+        }
+        </div>
           </div>
         <Footer/>
     </>

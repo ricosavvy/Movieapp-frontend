@@ -28,12 +28,7 @@ export default function LabTabs() {
   }, [])
 
 //   const [ UpcomingMovies, setUpcomingMovies ] = useState([])
-  
-//   useEffect(() => {
-//     fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}`)
-//       .then(response => response.json())
-//       .then(data => setUpcomingMovies(data.results))
-//   }, [])
+
 
   const [ NowPlaying, setNowPlaying ] = useState([])
   
@@ -129,34 +124,7 @@ export default function LabTabs() {
 
     {/* Upcoming */}
     {/* <TabPanel value="3">
-    <div className='movie__list'>
-    {
-            UpcomingMovies.map(movie => (
-                <div className='movie__Item'>
-                <Link style={{textDecoration: 'none', color:'white'}} to={`/movie/${movie.id}`}>
-                <Card sx={{ maxWidth: 345 }}>
-                    <CardActionArea>
-                        <CardMedia className='cardmedia'
-                        component="img"
-                        height="200"
-                        image={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`}
-                        alt="movie id"
-                        />
-                        <CardContent className='cardcontent'>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {movie ? movie.original_title: " "}
-                        </Typography>
-                        <Typography variant="body2" gutterBottom style={{}}>
-                            {movie ? movie.overview : ""}
-                        </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
-                </Link>
-                </div>
-            ))
-        }
-        </div>
+    
     </TabPanel> */}
 
     {/* Top Rated */}
