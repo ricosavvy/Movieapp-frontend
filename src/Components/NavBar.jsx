@@ -167,7 +167,7 @@ export default function PrimarySearchAppBar() {
             fontFamily={'cursive'}
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Movie App<span style={{color: 'yellow'}}>.Js</span> 
+            Zed<span style={{color: 'yellow'}}>Flix</span> 
           </Typography>
           </IconButton>
 
