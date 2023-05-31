@@ -64,11 +64,12 @@ const Forms = () => {
         },
         body: JSON.stringify({username: user.username,user: user._id, movieId: id, content: values.review})
       })
-      .then(response => response.json())
+      .then(response => {
+        response.json()
+        alert('Rating added')})
       .catch(error => {
         console.log(error)
       })
-      alert('Rating added')
       setSubmitting(false);
     },
   });
