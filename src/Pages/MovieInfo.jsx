@@ -120,8 +120,8 @@ const MovieInfo = () => {
     body: JSON.stringify({userId: user._id, movieId: id, movieName: movieInfo.original_title})
   })
   .then(response => {
-    response.json()
-    alert('Added to watch later')
+    response.json();
+    alert('Added to watch later');
   })
   .catch(error => {
     console.log(error)

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 import { setWatchLater } from '../state'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
@@ -68,11 +69,13 @@ const User = () => {
         {
               (Array.isArray(watchArray) ?
                 watchArray.map(fdbk => (
+                  <Link style={{textDecoration: 'none', color:'white'}} to={`/movie/${fdbk.movieId}`}>
                   <div className="watchlater">
                     <div className='watchlater_movie'>
                       <Typography variant='subtitle2'>{fdbk.movieName}</Typography>
                     </div>
                   </div>
+                  </Link>
                   // console.log(fdbk.movieName)
                 )) : " "
               )
