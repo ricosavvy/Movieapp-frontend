@@ -7,7 +7,7 @@
     width: 100%;
     height: 100vh;
     font-family: 'Times New Roman', Times, serif;
-    background: linear-gradient(#000000, #09090698), url(../assets/img/img2.jpg);
+    background: linear-gradient(#000000, #09090678), url(../assets/img/img2.jpg);
     background-position: center;
     background-size: cover;
     display: flex;
@@ -78,6 +78,8 @@
 .About-Us{
     height: 50vh;
     font-family: 'Times New Roman', Times, serif;
+    background: #000000e1;
+    color: aliceblue;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,6 +92,9 @@
     letter-spacing: .2rem;
 }
 
+.about_us_text{
+  font-size: 1.9rem;
+}
 .movie__list{
     display: flex;
     flex-wrap: wrap;
@@ -121,7 +126,7 @@
     color: white;
 }
 #loginn {
-  background-color: rgb(122, 9, 9);
+  background-color: #27296d;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,6 +142,12 @@
   
   #Header {
     color: white;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: italic;
+    
+    
   }
   
   #loginn >form {
@@ -150,10 +161,12 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+  
   }
   
   label {
     color: rgb(255, 255, 255);
+    
   }
   
   input[type="email"],
@@ -173,11 +186,11 @@
   #buttton {
     width: 215px;
     padding: 5px;
-    background-color: white;
+    background-color: purple;
   }
   #buttton:hover {
     
-    background-color: rgb(223, 98, 98); 
+    background-color: indigo; 
     color: white; /* Example hover text color */
   }
   
@@ -223,6 +236,26 @@
   background-position: center;
 }
 
+.wl{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#000000b7, #0000009d), url(../assets/img/img7.jpg);
+  background-size: cover;
+  background-position: center;
+  color: aliceblue;
+}
+
+.watchlater{
+  border: orange 1px solid;
+  padding: 1.5rem;
+  background-color: #0000007e;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
 #Welcome_text{
   font-size: 2rem;
 }
@@ -244,5 +277,16 @@
       .posterImage__description{
           width: 100%;
       }
+  }
+
+  #loginn {
+    border-radius: 20px; /* Adjust the value to control the amount of curve */
+    /* Additional styles for the login container */
+  }
+  .body {
+    width: 100%;
+    height: 100vh;
+    background-color: #181818;
+    color: #fff;
   }
     

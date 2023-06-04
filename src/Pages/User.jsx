@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Typography } from '@mui/material'
-import state from '../state'
+import { Link } from 'react-router-dom'
+import { setWatchLater } from '../state'
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
+// window.scrollTo(0,0)
 const User = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user)
   const token = useSelector((state) => state.token)
-  const[watchlist, setWatchlist] = useState([]);
+  const[watchlists, setWatchlist] = useState([]);
+  const watchArray = watchlists.watchlist;
+
+  const watchLaterList = () => {
   fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/watchlist/${user._id}`, {
     method: 'GET',
     headers: {
@@ -15,13 +22,19 @@ const User = () => {
       'Access-Control-Allow-Origin': 'https://localhost:3000'
     },
   })
-  .then(response => {
-    console.log(response.json())
-  })
-  .then(data => setWatchlist(data))
+  .then(response => response.json())
+  .then(data => {setWatchlist(data)
+    dispatch(setWatchLater({
+      watchlater: watchlists,})
+      )
+  const element = document.getElementById('wll');
+  element.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
+})
   .catch(error => {
     console.log(error)
   })
+}
+
   return (
     // <div className='overlay'>
     //   <h2>`Welcome: ${user.username}`</h2>
@@ -29,10 +42,16 @@ const User = () => {
     //     <h3 className="fname">{user.firstName}</h3><h3 className="fname">{user.lirstName}</h3>
     //   </div>
     // </div>
+    <>
     <div className='overlay'>
       <h2 id='Welcome_text'>Welcome <span style={{color: 'yellow'}}>{user.username}</span></h2>
-      <div className="wl">
-        {
+      <br />
+      <div className="like_btn">
+              <button id='smtbtns' type="submit" value={true} onClick={watchLaterList}> 
+               My Watchlater <ArrowDownwardIcon/>
+              </button>
+       </div>
+        {/* {
             watchlist.map(fdbk => (
               <div className="reviews">
                 <div className='Review'>
@@ -40,10 +59,31 @@ const User = () => {
                 </div>
               </div>
             ))
-          })
-      </div>
+          }
+
+       {/* {console.log(watchlist)} */}
+       </div>
+
+       <div className="wl" id='wll'>
+
+        {
+              (Array.isArray(watchArray) ?
+                watchArray.map(fdbk => (
+                  <Link style={{textDecoration: 'none', color:'white'}} to={`/movie/${fdbk.movieId}`}>
+                  <div className="watchlater">
+                    <div className='watchlater_movie'>
+                      <Typography variant='subtitle2'>{fdbk.movieName}</Typography>
+                    </div>
+                  </div>
+                  </Link>
+                  // console.log(fdbk.movieName)
+                )) : " "
+              )
+              // console.log(watchArray)
+        }
+       </div>
       
-    </div>
+    </>
   )
 }
 

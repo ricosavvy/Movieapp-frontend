@@ -1,16 +1,19 @@
 import "./MovieInfo.css";
 import { useFormik } from 'formik';
 import Box from '@mui/material/Box';
-import { setMovies } from '../state';
 import Footer from '../Components/Footer';
 import Rating from '@mui/material/Rating';
 import { Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import SendIcon from '@mui/icons-material/Send';
 import StarIcon from '@mui/icons-material/Star';
-import { useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
 
 
 const Forms = () => {
@@ -24,6 +27,20 @@ const Forms = () => {
     },
     onSubmit: (values, { setSubmitting }) => {
       //rating
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control_Allow_Origin': 'https://localhost:3000'
+        },
+        body: JSON.stringify({movie: id})
+      })
+      .then(response => response.json())
+      .catch(error => {
+        console.log(error)
+      })
+      //rating
       fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/rate`, {
         method: 'POST',
         headers: {
@@ -33,14 +50,11 @@ const Forms = () => {
         },
         body: JSON.stringify({user: user._id, movieId: id, rating: value})
       })
-      .then(response => {
-        console.log(response.json())
-      })
+      .then(response => response.json())
       .catch(error => {
         console.log(error)
       })
-
-      //rewiews
+      
       fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/review`, {
         method: 'POST',
         headers: {
@@ -48,16 +62,15 @@ const Forms = () => {
           'Content-Type': 'application/json',
           'Access-Control_Allow_Origin': 'https://localhost:3000'
         },
-        body: JSON.stringify({user: user._id, movieId: id, content: values.review})
+        body: JSON.stringify({username: user.username,user: user._id, movieId: id, content: values.review})
       })
       .then(response => {
-        console.log(response.json())
-      })
+        response.json()
+        alert('Rating added')})
       .catch(error => {
         console.log(error)
       })
       setSubmitting(false);
-      // console.log(id, values.review, value)
     },
   });
   
@@ -79,23 +92,23 @@ const Forms = () => {
 const MovieInfo = () => {
 
   const{ id } = useParams();
-  const dispatch = useDispatch();
-  const[movieInfo, setMovie] = useState();
+  const[movieInfo, setMovie] = useState([]);
+  const[Recommended, setRecommendion] = useState([]);
   const[Feedback, setFeedback] = useState([]);
   const token = useSelector((state) => state.token)
   const user = useSelector((state) => state.user)
+  const FeedbackArray = Feedback.reviews;
 
-  console.log(token)
-  useEffect(() => {
-    getMovieInfo()
-    window.scrollTo(0,0)
-  }, [])
+  // useEffect(() => {
+  //   getMovieInfo()
+  //   window.scrollTo(0,0)
+  // }, [])
 
-  const getMovieInfo = () => [
+  // const getMovieInfo = () => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(data => setMovie(data))
-  ]
+  // }
 
   const movielistsubmitting = () =>{
     fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/watchlist/add`, {
@@ -108,14 +121,9 @@ const MovieInfo = () => {
     body: JSON.stringify({userId: user._id, movieId: id, movieName: movieInfo.original_title})
   })
   .then(response => {
-    console.log(response.json())
+    response.json();
+    alert('Added to watch later');
   })
-  .then(data => console.log(data)
-    // const movies = data
-    // dispatch(setMovies({
-    //   movies
-    // }))
-  )
   .catch(error => {
     console.log(error)
   })
@@ -123,26 +131,42 @@ const MovieInfo = () => {
     // console.log(Movie)
   }
   //Returns info about the movie
-  useEffect(() => {
-    fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
+  // useEffect(() => {
+    // }, [])
+    const movieReviews = () => {
+      fetch(`https://movieapp-backend-production-a4be.up.railway.app/api/movies/${id}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://localhost:3000'
+        },
+      })
+      .then(response => response.json())
+      .then(data => { 
+        if(Array.isArray(data.reviews))
+        {
+        setFeedback(data)}
+      }
+        )
+      .catch(error => {
+        console.log(error)
+      })      
+  }  
+
+  const options = {
     method: 'GET',
     headers: {
-       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://localhost:3000'
-    },
-  })
-  .then(response => response.json())
-  .then(data => {
-    data.json()
-    console.log(data.reviews[0])
-    setFeedback(data)})
-  .catch(error => {
-    console.log(error)
-  })
-  }, [])
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZTU4ZDMwMDViOTAwN2I4NzQ1ODI2YjljYWJiMmM1MyIsInN1YiI6IjY0MzA0OTU4MTI4M2U5MDBmNTI4Yzc1YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xkY_WF8xvsLmgEhC3wbZBZdQ8L1cQa9fhyD2kcPO04c'
+    }
+  };
   
-  const reviewArray = Feedback.reviews;
+  fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1`, options)
+    .then(response => response.json())
+    .then(response => setRecommendion(response.results))
+    .catch(err => console.error(err));
+
   return (
     <>
       <div className="movie__details">
@@ -168,7 +192,10 @@ const MovieInfo = () => {
 
               <div className="ratings">
                 <div className="rate">{movieInfo ? "Global rating: " + movieInfo.vote_average: " "}<StarIcon/>{" "}</div> 
-                <div className="rate">{Feedback ? "Local rating: " + Feedback.rating: "Local Rating: 0" }<StarIcon/>{" "}</div>
+                <div className="rate">{
+                Feedback ? "Local rating: " + Feedback.rating: "Local Rating: 0" 
+                }<StarIcon/>{" "}
+                </div>
               </div>
             </div>
         </div>
@@ -204,19 +231,61 @@ const MovieInfo = () => {
           <div className="theForm">
             <Forms />
           </div>
+          <div className="reviews_btn">
+            <div className="like_btn">
+                <button id='smtbtns' type="submit" value={true} onClick={movieReviews}> 
+                Reviews
+                </button>
+            </div>
+          </div>
 
-          {console.log(reviewArray[0])}
-          {console.log(Feedback)}
-            {/* {
-              reviewArray.map((fdbk) => (
-                // <div className="reviews">
-                //     <div className='Review'>
-                //       <Typography variant='subtitle2'>{fdbk}</Typography>
-                //     </div>
-                //   </div>
-                      console.log(fdbk)
-                ))
-              } */}
+          <div className="review_overlay">
+            {
+              (Array.isArray(FeedbackArray) ?
+                FeedbackArray.map(fdbk => (
+                  <div className="reviews">
+                    <div className='Review'>
+                      {/* <Typography variant='subtitle2'>{' '}</Typography> */}
+                      <Typography variant='subtitle1'>{fdbk.content}</Typography>
+                      <Typography variant='subtitle2'>{'by - ' + fdbk.username}</Typography>
+                    </div>
+                  </div>
+                  // console.log(fdbk)
+                )) : " "
+              )
+                }
+              </div>
+
+              <div className='movie__list'>
+                {/* <div className="recommendations"><Typography varient='H4'>Recommended</Typography></div> */}
+    {
+            Recommended.map(movie => (
+                <div className='movie__Item'>
+                <Link style={{textDecoration: 'none', color:'white'}} to={`/movie/${movie.id}`}>
+                <Card sx={{ maxWidth: 345 }}>
+                    <CardActionArea>
+                        <CardMedia className='cardmedia'
+                        component="img"
+                        height="200"
+                        image={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`}
+                        alt="movie id"
+                        />
+                        <CardContent className='cardcontent'>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {movie ? movie.original_title: " "}
+                        </Typography>
+                        <Typography variant="body2" gutterBottom style={{}}>
+                            {movie ? movie.overview : ""}
+                        </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                </Link>
+                </div>
+            ))
+            // console.log(Recommended)
+        }
+        </div>
           </div>
         <Footer/>
     </>

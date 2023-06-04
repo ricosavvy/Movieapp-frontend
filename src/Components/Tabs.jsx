@@ -27,12 +27,12 @@ export default function LabTabs() {
       .then(data => setPopularMovies(data.results))
   }, [])
 
-//   const [ recommendation, setRecommendation ] = useState([])
+//   const [ UpcomingMovies, setUpcomingMovies ] = useState([])
   
 //   useEffect(() => {
 //     fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}`)
 //       .then(response => response.json())
-//       .then(data => setRecommendation(data.results))
+//       .then(data => setUpcomingMovies(data.results))
 //   }, [])
 
   const [ NowPlaying, setNowPlaying ] = useState([])
@@ -131,7 +131,7 @@ export default function LabTabs() {
     {/* <TabPanel value="3">
     <div className='movie__list'>
     {
-            setRecommendation.map(movie => (
+            UpcomingMovies.map(movie => (
                 <div className='movie__Item'>
                 <Link style={{textDecoration: 'none', color:'white'}} to={`/movie/${movie.id}`}>
                 <Card sx={{ maxWidth: 345 }}>

@@ -6,7 +6,7 @@ import img10 from '../assets/img/img10.jpeg'
 import img11 from '../assets/img/img11.jpeg'
 import img12 from '../assets/img/img12.jpeg'
 import img9 from '../assets/img/img9.jpeg'
-import  { useState } from "react";
+import { useState } from 'react'
 
 const developers = [
       {
@@ -46,75 +46,90 @@ const developers = [
         image: `${img14}`,
       },
     ]
-    const ContactUs = () => {
     
-       return (
-      <div className="contact-us">
-        {developers.map((developer, index) => (
-          <div className="contact-card" key={index}>
-            <div className="image-container">
-              <img src={developer.image} alt={developer.name} />
-            </div>
-            <div className="info">
-              <h3>{developer.name}</h3>
-              <p>Email: {developer.email}</p>
+    const ContactUs = () => {
+      const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    
+      const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [name]: value,
+        }));
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission here
+        console.log(formData);
+      };
+    
+      return (
+        <div className="contact-us">
+          <h1 className="header">Contact Us</h1>
+    
+          <div className="developers-section">
+            <h2 className="subheader">Meet Our Developers</h2>
+            <div className="developer-list">
+              {developers.map((developer) => (
+                <div key={developer.id} className="developer-card">
+                  <img
+                    src={developer.image}
+                    alt={developer.name}
+                    className="developer-image"
+                  />
+                  <h3 className="developer-name">{developer.name}</h3>
+                  <p className="developer-email">{developer.email}</p>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-        <Contactus />
-      </div>
+    
+          <div className="contact-form-section">
+            <h2 className="subheader">Get in Touch With Us</h2>
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                value={formData.subject}
+                onChange={handleInputChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
       );
-   };
-   function Contactus() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log("Name: ", name);
-      console.log("Email: ", email);
-      console.log("Message: ", message);
-      // Add code to send the message to your server or email service
     };
-  
-    return (
-      <div className="contact-container">
-        <h1 className="contact-heading">Contact Us</h1>
-        <form onSubmit={handleSubmit} className="contact-form">
-          <label className="contact-label">
-            Name:
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="contact-input"
-            />
-          </label>
-          <label className="contact-label">
-            Email:
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="contact-input"
-            />
-          </label>
-          <label className="contact-label">
-            Message:
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="contact-input contact-textarea"
-            />
-          </label>
-          <button type="submit" className="contact-button">
-            Submit
-          </button>
-        </form>
-      </div>
-    );
-  }
   export default ContactUs;
   
       

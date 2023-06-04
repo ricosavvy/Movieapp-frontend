@@ -25,6 +25,7 @@ function Login() {
         body: JSON.stringify(values),
       })
         .then(response => {
+          alert('Logged in')
           const token = response.headers.get("access-token")
           dispatch(setToken({
             token: token,
@@ -47,7 +48,7 @@ function Login() {
   });
 
   return (
-    <div className="form_overlay">
+    <div className="body">
     <div id="loginn">
       <h2 id="Header">Log In</h2>
       <form onSubmit={formik.handleSubmit}>

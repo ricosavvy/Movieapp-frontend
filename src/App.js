@@ -10,7 +10,6 @@ import MoviePage from './Pages/MoviePage';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import SearchedMovies from './Pages/SearchedMovies';
 import Signup from './Pages/Signup';
-import state from './state';
 import { useSelector } from 'react-redux';
 
 function App() {
