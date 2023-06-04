@@ -133,7 +133,10 @@ const MovieInfo = () => {
     },
   })
   .then(response => response.json())
-  .then(data => setFeedback(data))
+  .then(data => {
+    data.json()
+    console.log(data.reviews[0])
+    setFeedback(data)})
   .catch(error => {
     console.log(error)
   })
@@ -202,8 +205,8 @@ const MovieInfo = () => {
             <Forms />
           </div>
 
-          {console.log(reviewArray)}
-          {console.log(Feedback.reviews)}
+          {console.log(reviewArray[0])}
+          {console.log(Feedback)}
             {/* {
               reviewArray.map((fdbk) => (
                 // <div className="reviews">
